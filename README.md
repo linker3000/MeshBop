@@ -50,7 +50,7 @@ Setting up a messaging system requires a Meshtastic node device to which there�
 
 **Important: Meshtastic firmware (currently) sends and receives TEXTMSG messages to / from the first (primary) Meshtastic channel, so if you want to use this application in a private group, that group MUST be set as the FIRST channel on the Meshtastic node hooked up for messaging. Further notes below.**
 
-The setup used to develop this app comprises a Seeed studios Xiao ESP32 + SX1262 Meshtastiuc kit and a Raspberry Pi Zero 2W. This makes for an easy build because there is a script for the Pi that sets up most of Node-RED. This documentation is based on that setup.
+The setup used to develop this app comprises a Seeed studios XIAO ESP32 + SX1262 Meshtastic kit and a Raspberry Pi Zero 2W. This makes for an easy build because there is a script for the Pi that sets up most of Node-RED. This documentation is based on that setup.
 
 <div align="center">
 <img src="images/devboard-sm.jpg" alt="Devboard" width="640">
@@ -99,7 +99,7 @@ The wiring between the computer board and the Meshtastic NODE will depend on wha
 <img src="images/wiring.png" alt="Board wiring" width="800">
 </div>
 
-The pins on the Xiao board marked RX and TX weren’t used in this case because they were hooked up to a GPS module. This wiring meant that the serial setup in the Meshtastic was as follows:
+The pins on the XIAO board marked RX and TX weren’t used in this case because they were hooked up to a GPS module. This wiring meant that the serial setup in the Meshtastic was as follows:
 
 <div align="center">
 <img src="images/serial-config-meshtastic.png" alt="Serial config" width="400">
