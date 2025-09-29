@@ -20,6 +20,20 @@ You are free to:
  
 Full License Text: https://creativecommons.org/licenses/by-nc-sa/4.0/
 ```
+---
+**Beta 0 fix - changeme**
+
+If you've already downloaded and installed the beta code, here's a fix to stop one ident message being sent for every news article.
+
+Add a delay node before the *delay 5s* node on the setup tab, and set its parameters as per the image below. 
+Once done, hit Deploy. The beta code here will be updated shortly and this message removed.
+
+<div align="center">
+<img src="images/ident-beta001.png" alt="Beta 0 fix" width="800">
+</div>
+
+---
+
 This package installs a set of muti-tab flows that comprise a trigger/response messaging service for Meshtastic using the Meshtastic TEXTMSG method of message sending and receiving. There is also a dashboard page for sending and receiving messages.
 
 The setup PDF contains mostly the same info as below, so it is not an essential download. 
