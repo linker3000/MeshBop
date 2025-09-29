@@ -4,6 +4,7 @@ A simple messaging service for Meshtastic, written as a set of Node-RED flows.
 *The accuracy and results of using this app depend on your setup work and third party code.
 This app is supplied 'as is'. Use at your own risk. No responsibility is accepted for 
 consequential loss or errors. Feedback is welcome at the address below or via the Issues tab.*
+
 ```
 Author:	Linker3000 (linker3000@gmail-dot-thingy)
 License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International CC BY-NC-SA 4.0)
@@ -102,9 +103,27 @@ The pins on the Xiao board marked RX and TX weren’t used in this case because 
 
 <div align="center">
 <img src="images/serial-config-meshtastic.png" alt="Serial config" width="400">
+ <P></P>
 </div>
 
 Unless arranged differently by the setup, the Pi and Seeed boards still need their own, separate USB power supplies.
+
+### Importing the REDTastic package into Node-RED
+1. Download the REDTastic *.json package from this repo.
+2. Open the Burger Menu in Node-RED (top right) and select Import.
+3. Choose *select a file to import*.
+4. Select the downloaded .json file.
+5. Click *Import*.
+6. Click Deploy.
+
+#### Global Config Error
+If you receive the message: *The workspace contains some unknown node types: global-config*, try the following:
+1. Click Deploy.
+2. Click Search for unknown nodes.
+3. Select the global-config node – notice that it is displayed with a flashing border in a list on the right side of the screen.
+4. Double-click the node with the flashing border.
+5. Select Delete.
+6. Select Deploy. The deploy should now work and it’s time to start configuring your flows.
 
 ### Async ports
 How to enable the serial module (async port) and set TEXTMSG mode on set a meshtastic node 
