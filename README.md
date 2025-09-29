@@ -22,6 +22,8 @@ Full License Text: https://creativecommons.org/licenses/by-nc-sa/4.0/
 ```
 This package installs a set of muti-tab flows that comprise a trigger/response messaging service for Meshtastic using the Meshtastic TEXTMSG method of message sending and receiving. There is also a dashboard page for sending and receiving messages.
 
+The setup PDF contains mostly the same info as below, so it is not an essential download. 
+
 **Weather flow**
 <div align="center">
 <img src="images/weather-time.png" alt="Dashboard" width="800">
