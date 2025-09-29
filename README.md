@@ -26,7 +26,7 @@ Full License Text: https://creativecommons.org/licenses/by-nc-sa/4.0/
 If you've already downloaded and installed the beta code, here's a fix to stop one ident message being sent for every news article.
 
 Add a delay node before the *delay 5s* node on the setup tab, and set its parameters as per the image below. 
-Once done, hit Deploy. The beta code here will be updated shortly and this message removed.
+Once done, hit Deploy. This fix is not needed for beta code 0.01 (filename *-beta001) onwards.
 
 <div align="center">
 <img src="images/ident-beta001.png" alt="Beta 0 fix" width="800">
