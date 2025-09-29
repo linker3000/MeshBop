@@ -1,0 +1,3356 @@
+[
+    {
+        "id": "f6b1f44606ded4ce",
+        "type": "tab",
+        "label": "Setup / Node in / Node out",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a6461831f8e53b6c",
+        "type": "tab",
+        "label": "Help / Ping / Test",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "11117d242a0685d2",
+        "type": "tab",
+        "label": "Weather / Time / Astro",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "56cc0dfbc69f9b0b",
+        "type": "tab",
+        "label": "Severe weather",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5af70842da42d7a1",
+        "type": "tab",
+        "label": "News",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7b143e698a1078d6",
+        "type": "tab",
+        "label": "Zen / Info msg",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4e6cdcf3368ac5dc",
+        "type": "tab",
+        "label": "Dashboard",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "624951b3adc30a90",
+        "type": "junction",
+        "z": "5af70842da42d7a1",
+        "x": 240,
+        "y": 140,
+        "wires": [
+            [
+                "c522f21de3e6a5dc",
+                "a7704be4565efefa",
+                "8b7cab68e66051b9"
+            ]
+        ]
+    },
+    {
+        "id": "5f01e22bdea6377f",
+        "type": "junction",
+        "z": "f6b1f44606ded4ce",
+        "x": 680,
+        "y": 160,
+        "wires": [
+            [
+                "42eedbe49f17dc4e",
+                "58c15cbbbe15c2c1"
+            ]
+        ]
+    },
+    {
+        "id": "2a9ed847435a3de8",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "088d120366f9f107",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "/dev/ttyAMA0",
+        "serialbaud": "19200",
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "191e18768ba75f1f",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "6c48d20a520bd024",
+        "type": "ui-page",
+        "name": "REDTastic Dashboard",
+        "ui": "191e18768ba75f1f",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "2a9ed847435a3de8",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "b9c7f6fc95eadf37",
+        "type": "ui-group",
+        "name": "REDTastic dashboard",
+        "page": "6c48d20a520bd024",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "afb0716e9ddefe89",
+        "type": "function",
+        "z": "f6b1f44606ded4ce",
+        "name": "** Read me, and set global variables in here before you start **",
+        "func": "/**\n * Project: REDTastic V0.01 beta \n * Author:  Linker3000 (linker3000@gmail-dot-thingy)\n * License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International \n * (CC BY-NC-SA 4.0)\n *\n * You are free to:\n * - Share — copy and redistribute the material in any medium or format\n * - Adapt — remix, transform, and build upon the material\n *\n * Under the following terms:\n * - Attribution — You must give appropriate credit.\n * - NonCommercial — You may not use the material for commercial purposes.\n * - ShareAlike — If you remix, transform, or build upon the material, you \n *     must distribute your contributions under the same license.\n *\n * Full License Text: https://creativecommons.org/licenses/by-nc-sa/4.0/\n \nA simple messaging system for Meshtastic that uses the TEXTMSG serial\nfunction to send selected messages triggered by the received messages. \nThere is also a dashboard page for sending and receiving messages.\n\nAll messages are received and sent to the first (primary) Meshtastic channel, \nso if you want to use this application in a private group, that group MUST be \nthe FIRST channel on the meshtastic node handling messaging. See publisjhed \ndocs for more info.\n\nYou'll find more setup details at: https://github.com/linker3000/REDTastic\n\nFeel free to suggest improvements or changes. It will be especially helpful\nto receive flows to use this app with other news and weather services.\n\nNotes:\n\nRead all these notes carefully. before changing anything.\n\nThe accuracy and results of these flows depends on your setup work and third party code.\nThis app is supplied 'as is'. Use at your own risk. No responsibility is accepted for \nconsequential loss or errors. Feedback is welcome at the address above or the Issues\ntab at the GitHub project page.\n\nAs of September 2025, there is a bug in the Meshtastic node firmware, and TEXTMSG\nmode (used by this code) may transmit a spurious character when the node is powered\non or off. This has been reported and is nothing to do with this app.\n\n*** Some features in this app are disabled by default. See the notes below. ***\n\n*** Some pages have further notes and comments in the top left corner of their tab  ***\n\n************************************************************************************\nWhen testing, disable the Async out node on this tab and save\nyour change so that you don't send out test messages. You can see what's being\ngenerated in the debug window on that tab.\nDo pre-live testing in a secondary (private) channel.\nRemember to re-enable the node when you're ready to rock.\n\nThe Async out node may already be disabled when you install these flows - do check.\n\nSome flows have rate limiting nodes, please respect the mesh and don't do \nanything that might flood it with messages. If in doubt, disable the \nAsync out node on this tab and reload Node-RED before testing.\n\nSome flows have inject inputs for testing. If any of the functionality (such\nas message triggering) is changed, these may need to be changed too.\n************************************************************************************\n---------------------------------------------------------------------------------\n\nSet global variables below. Some variables may be 'for future use'.\n\n>> If you want emails sent (eg: Severe weather warnings):\n\n* Configure your email details address below.\n* Configure, enable (if disabled) and test the Email node on this tab.\n* By default, the severe weather warnings are only sent to email. Modify the \n*   link-outs on that page when you are good to send to the Mesh too.\n\n>> Things you must do here and on other tabs:\n\n* Set the async port parameters for the input and output nodes. These must match those\n  set on your Meshtastic node in its radio configuration.\n\nIf running on a Linux system, and your async in and out nodes don't work \nor don't show as 'connected', you may need to add the account running Node-RED\nto the 'dialout' group or equivalent for your distribution. This is well-documented -\ntry a Web search for 'linux dialout serial'.\n\n* The weather info comes from Open-Meteo and should work if the Lat and Long\n  are set below to the right location, otherwise the fallback is central London.\n\n* Set up and enable the Severe Weather flow (Optional - see its tab for more notes)\n    By default, the severe weather warnings are picked up from the UK Met Office and\n    Open-Meteo (thunderstorms and high winds). You might wish to change this.\n\n* Check or set your message trigger texts in the \"Parse Rx message\" function\n    on this tab.\n\n* Modify your Help messages to match your trigger texts.\n\n*/\n\n// SET THESE...\n\n// The trigger pattern for your messages - recommended to be a slash followed\n// by your pattern, for example, mine is /l3k, so to trigger the news\n//response, someone sends /l3kn etc..\nglobal.set('basePattern', '/l3k');\n\n// The pattern that is used to send a help/info message\n// set to '' if you don't have one. This should match how the function \n// block on this tab is set to trigger for this message.  \nglobal.set('helpMsg','/l3k?');\n\n// Fixed IP address of this server (not actually used yet if this message is here)\nglobal.set ('myIP','0.0.0.0');\n\n// Set your location (static text) - used in some messages. \nglobal.set('location', 'Town, County');\n\n// Set your Region - a more generalised location.\nglobal.set('region', 'County or region');\n\n//Set this for Astro and weather. The default here is central London...\nglobal.set('latitude', 51.50742);   \nglobal.set('longitude', 0.1278);  \nglobal.set('height', 10.0);  // Elevation above MSL in meters\n\n//For timezone:\nglobal.set('locale','en-GB');\n\n//Set your email addresses for weather alerts (if email is enabled):\nglobal.set('emailTo', 'myaddress@example.com')\nglobal.set('emailFrom', 'fromaddress@example.com')\n\n// Also set your email account details (user name and password etc.)\n// in the email node on this tab, and the email node may \n// need to be enabled.\n\n// Don't change these please!\nglobal.set('version','REDTastic V0.01 beta.');\nglobal.set('info','REDTastic is a Meshtastic messaging system written in Node-RED by Linker3000. See https://github.com/linker3000/REDTastic');\n\nreturn null;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "34115d5c877cb6d7",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Initialise",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 200,
+        "y": 60,
+        "wires": [
+            [
+                "afb0716e9ddefe89"
+            ]
+        ]
+    },
+    {
+        "id": "0edce89529f06983",
+        "type": "serial in",
+        "z": "f6b1f44606ded4ce",
+        "name": "Async in",
+        "serial": "088d120366f9f107",
+        "x": 140,
+        "y": 540,
+        "wires": [
+            [
+                "cd8f0b2215a4c041"
+            ]
+        ]
+    },
+    {
+        "id": "cd8f0b2215a4c041",
+        "type": "function",
+        "z": "f6b1f44606ded4ce",
+        "name": "Sanitise string",
+        "func": "let str = msg.payload;\n\n// Remove any leading or trailing spaces in the received message.\nstr = str.trim();\n\n// Remove any non-ASCII characters in the middle of the string\nstr = str.replace(/[^\\x20-\\x7E]/g, '');  // Keeps printable ASCII characters (0x20 to 0x7E)\n\nif (str == '') return null;\n\nmsg.payload = str;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 540,
+        "wires": [
+            [
+                "01336f833bde40e6",
+                "c4546c8089d32827",
+                "6402fdd846bd8f09"
+            ]
+        ]
+    },
+    {
+        "id": "7f81ef91a703c94c",
+        "type": "link out",
+        "z": "f6b1f44606ded4ce",
+        "name": "Weather trigger",
+        "mode": "link",
+        "links": [
+            "33747d402cdbaf6a"
+        ],
+        "x": 705,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "0434b2b9cedac352",
+        "type": "link out",
+        "z": "f6b1f44606ded4ce",
+        "name": "Help trigger",
+        "mode": "link",
+        "links": [
+            "1f2f7962135a74b6"
+        ],
+        "x": 705,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "073ff9ddbab1960b",
+        "type": "link out",
+        "z": "f6b1f44606ded4ce",
+        "name": "News trigger",
+        "mode": "link",
+        "links": [
+            "12e48ce2bd05723e"
+        ],
+        "x": 705,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "e7146af9f0440882",
+        "type": "link out",
+        "z": "f6b1f44606ded4ce",
+        "name": "Astro trigger",
+        "mode": "link",
+        "links": [
+            "bdf8d2fc0d658111"
+        ],
+        "x": 705,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "4c5bddca6c13c7c2",
+        "type": "link out",
+        "z": "f6b1f44606ded4ce",
+        "name": "MOTD trigger",
+        "mode": "link",
+        "links": [
+            "bf0dc7c40638d2f0"
+        ],
+        "x": 705,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "42eedbe49f17dc4e",
+        "type": "serial out",
+        "z": "f6b1f44606ded4ce",
+        "d": true,
+        "name": "Async out",
+        "serial": "088d120366f9f107",
+        "x": 800,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c60cfdaafa8166da",
+        "type": "link in",
+        "z": "f6b1f44606ded4ce",
+        "name": "Node Tx",
+        "links": [
+            "e7a6e98c3cb0905f",
+            "cee8c66a02534dde",
+            "6418c4731de72cfc",
+            "6ac787328c196728",
+            "f83f4f2c205c1d28",
+            "40f5683dc13e1deb",
+            "02131ee8edc8efac",
+            "75c6a684a3a48890",
+            "6a1180661079f838",
+            "b0cf85ea70025816"
+        ],
+        "x": 135,
+        "y": 160,
+        "wires": [
+            [
+                "3279ea642b18277f"
+            ]
+        ]
+    },
+    {
+        "id": "58c15cbbbe15c2c1",
+        "type": "function",
+        "z": "f6b1f44606ded4ce",
+        "name": "Debug output",
+        "func": "let payloadLength = (typeof msg.payload === 'string') ? msg.payload.length : 0;\n\nmsg.payload = msg.payload + \" (\" + payloadLength + \")\";\nnode.warn (msg.payload)\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "40847e47bef0c4ed",
+        "type": "delay",
+        "z": "f6b1f44606ded4ce",
+        "name": "Rate limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 580,
+        "y": 160,
+        "wires": [
+            [
+                "5f01e22bdea6377f"
+            ]
+        ]
+    },
+    {
+        "id": "883383e65beb84c5",
+        "type": "link out",
+        "z": "f6b1f44606ded4ce",
+        "name": "Test / Ping trigger",
+        "mode": "link",
+        "links": [
+            "d1cc1f0fd106d9fc"
+        ],
+        "x": 705,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "01336f833bde40e6",
+        "type": "debug",
+        "z": "f6b1f44606ded4ce",
+        "name": "Received",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "c4546c8089d32827",
+        "type": "link out",
+        "z": "f6b1f44606ded4ce",
+        "name": "Received message",
+        "mode": "link",
+        "links": [
+            "7f5b7ae422eee4c0"
+        ],
+        "x": 615,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "e434d18602123c95",
+        "type": "e-mail",
+        "z": "f6b1f44606ded4ce",
+        "d": true,
+        "server": "",
+        "port": "465",
+        "authtype": "BASIC",
+        "saslformat": true,
+        "token": "oauth2Response.access_token",
+        "secure": false,
+        "tls": false,
+        "name": "",
+        "dname": "Email",
+        "x": 610,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "c7e72d3686283fec",
+        "type": "link in",
+        "z": "f6b1f44606ded4ce",
+        "name": "Send an email",
+        "links": [
+            "75c6a684a3a48890",
+            "02131ee8edc8efac"
+        ],
+        "x": 135,
+        "y": 380,
+        "wires": [
+            [
+                "479c860f15c34042"
+            ]
+        ]
+    },
+    {
+        "id": "2d703422c2f8ab2d",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Test email",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "REDTastic. Test email",
+        "payload": "Hello. This is a test email from REDTastic",
+        "payloadType": "str",
+        "x": 200,
+        "y": 440,
+        "wires": [
+            [
+                "479c860f15c34042"
+            ]
+        ]
+    },
+    {
+        "id": "479c860f15c34042",
+        "type": "change",
+        "z": "f6b1f44606ded4ce",
+        "name": "Configure email",
+        "rules": [
+            {
+                "t": "set",
+                "p": "to",
+                "pt": "msg",
+                "to": "emailTo",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "from",
+                "pt": "msg",
+                "to": "emailFrom",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 380,
+        "wires": [
+            [
+                "e434d18602123c95",
+                "533bc0d4cbc57c2c"
+            ]
+        ]
+    },
+    {
+        "id": "533bc0d4cbc57c2c",
+        "type": "debug",
+        "z": "f6b1f44606ded4ce",
+        "name": "Debug email",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "6402fdd846bd8f09",
+        "type": "function",
+        "z": "f6b1f44606ded4ce",
+        "name": "Parse Rx message",
+        "func": "// Parses the received message and decides what to do with it.\n// This is all done with Regex (sorry!), but is not too hard\n// to work out and test if you check out the default conditions below.\n// You can keep these defaults, change them or add your own.\n//\n// ** If you add a new test, remember to go to the setup tab here and\n// add another output for it.\n//\n// Always test with the Tx node disabled + in a private channel \n// before you 'go live'. \n\n// Check for null message first - if so, do nothing.\nif (!msg || msg.payload === null || msg.payload === undefined) {\n    return null;\n}\n\n// Get the trigger prefix being looked for. Just in case it's unset\n// in the global parameters you can put a fallback here.\n// Once defined, the message triggers all start with the prefix\n// string so, for example, we can have a trigger on /l3kz to get \n// a random inspirational (or otherwise!) Zen message.\n//\n// To help with debugging, info about the chosen output is \n// sent to output 1, which has a debug node connected to it. \n\n// Changing the l3k here will change the default message trigger check.\n// It can be left 'as is' if the basePattern global variable is set\n// properly in the setup function block on the first tab because\n// that will override the l3k here.\nlet basePattern = global.get(\"basePattern\") || \"/l3k\";\nnode.warn(basePattern);\n\n// Convert payload to string and strip sender ID\nlet content = String(msg.payload || \"\").replace(/^[^:]+:\\s*/, \"\");\n\n// Define the regex patterns with dynamic base and descriptions\nconst patterns = [\n    {regex: new RegExp(basePattern + \"w$\"), desc: \"w pattern\"},                    // Output 2\n    {regex: new RegExp(basePattern + \"n(,\\\\d+(,u)?)?$\"), desc: \"n pattern\"},       // Output 3  \n    {regex: new RegExp(basePattern + \"\\\\?$\"), desc: \"? pattern\"},                  // Output 4\n    {regex: new RegExp(basePattern + \"t$\"), desc: \"t pattern\"},                    // Output 5\n    {regex: new RegExp(basePattern + \"z$\"), desc: \"z pattern\"},                    // Output 6\n    {regex: new RegExp(\"(test|testing)$\"), desc: \"test pattern\"},                  // Output 7\n    {regex: new RegExp(\"ping$\"), desc: \"ping pattern\"},                            // Output 8\n    {regex: new RegExp(basePattern + \"i$\"), desc: \"i pattern\"},                    // Output 9\n\n];\n\n// Test each pattern against the stripped message\nfor (let i = 0; i < patterns.length; i++) {\n    if (patterns[i].regex.test(content)) {\n        // Create debug message for first output\n        let debugMsg = {\n            payload: `Output ${i + 2} selected: \"${content}\" matched ${patterns[i].desc} (${patterns[i].regex.source})`\n        };\n        \n        // Create array of 8 null outputs (1 debug + 7 original)\n        let outputs = new Array(8).fill(null);\n        outputs[0] = debugMsg;           // Debug output\n        outputs[i + 1] = msg;           // Original message to matching output\n        return outputs;\n    }\n}\n\n// No match found - send debug message\nlet noMatchMsg = {payload: `No match found for: \"${content}\"`};\nlet outputs = new Array(8).fill(null);\noutputs[0] = noMatchMsg;\nreturn outputs;",
+        "outputs": 9,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 680,
+        "wires": [
+            [
+                "292ea05285775f56"
+            ],
+            [
+                "7f81ef91a703c94c"
+            ],
+            [
+                "073ff9ddbab1960b"
+            ],
+            [
+                "0434b2b9cedac352"
+            ],
+            [
+                "e7146af9f0440882"
+            ],
+            [
+                "4c5bddca6c13c7c2"
+            ],
+            [
+                "883383e65beb84c5"
+            ],
+            [
+                "883383e65beb84c5"
+            ],
+            [
+                "8f27cd7afbe24f53"
+            ]
+        ]
+    },
+    {
+        "id": "d943a2d1cca73de4",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Test news (no params)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "AAAA: /l3kn",
+        "payloadType": "str",
+        "x": 200,
+        "y": 600,
+        "wires": [
+            [
+                "6402fdd846bd8f09"
+            ]
+        ]
+    },
+    {
+        "id": "292ea05285775f56",
+        "type": "debug",
+        "z": "f6b1f44606ded4ce",
+        "name": "Debug for message triggers",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "d973bf9e739f0181",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Test news ,2,u",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "AAAA: /l3kn,2,u",
+        "payloadType": "str",
+        "x": 170,
+        "y": 640,
+        "wires": [
+            [
+                "6402fdd846bd8f09"
+            ]
+        ]
+    },
+    {
+        "id": "292d3402fcd434e6",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Test weather",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "AAAA: /l3kw",
+        "payloadType": "str",
+        "x": 170,
+        "y": 680,
+        "wires": [
+            [
+                "6402fdd846bd8f09"
+            ]
+        ]
+    },
+    {
+        "id": "cb526626f5890fb2",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Test motd",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "AAAA: /l3km",
+        "payloadType": "str",
+        "x": 160,
+        "y": 760,
+        "wires": [
+            [
+                "6402fdd846bd8f09"
+            ]
+        ]
+    },
+    {
+        "id": "207d500275052262",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Test help",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "AAAA: /l3k?",
+        "payloadType": "str",
+        "x": 160,
+        "y": 800,
+        "wires": [
+            [
+                "6402fdd846bd8f09"
+            ]
+        ]
+    },
+    {
+        "id": "653bf5670c1e719b",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Test time/astro",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "AAAA: /l3kt",
+        "payloadType": "str",
+        "x": 180,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "05daea6656700eac",
+        "type": "function",
+        "z": "f6b1f44606ded4ce",
+        "name": "Ident message",
+        "func": "if (global.get('version') && global.get('helpMsg')) {\n    msg.payload = global.get('version') + ' Send \"' + global.get('helpMsg') + '\" for menu.';\n    return msg;\n} else {\n    return null; // Don't send anything if either value is missing or empty\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 240,
+        "wires": [
+            [
+                "40847e47bef0c4ed"
+            ]
+        ]
+    },
+    {
+        "id": "706282d4eb48402e",
+        "type": "link in",
+        "z": "f6b1f44606ded4ce",
+        "name": "Send ident message",
+        "links": [
+            "f83f4f2c205c1d28",
+            "e7a6e98c3cb0905f",
+            "75c6a684a3a48890",
+            "02131ee8edc8efac",
+            "6418c4731de72cfc",
+            "6ac787328c196728",
+            "cee8c66a02534dde",
+            "6a1180661079f838"
+        ],
+        "x": 135,
+        "y": 220,
+        "wires": [
+            [
+                "21dde60d66dcb77b"
+            ]
+        ]
+    },
+    {
+        "id": "c49e9a333905ad30",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Send ident message",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "86400",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 240,
+        "y": 280,
+        "wires": [
+            [
+                "05daea6656700eac"
+            ]
+        ]
+    },
+    {
+        "id": "a5e30a95a8cf3b22",
+        "type": "delay",
+        "z": "f6b1f44606ded4ce",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "05daea6656700eac"
+            ]
+        ]
+    },
+    {
+        "id": "2e535b36271be8ad",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Reset all rate limits",
+        "props": [
+            {
+                "p": "reset",
+                "v": "true",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 230,
+        "y": 100,
+        "wires": [
+            [
+                "40847e47bef0c4ed",
+                "fd8417fd43a55e03"
+            ]
+        ]
+    },
+    {
+        "id": "fd8417fd43a55e03",
+        "type": "link out",
+        "z": "f6b1f44606ded4ce",
+        "name": "Reset rate limits",
+        "mode": "link",
+        "links": [
+            "e85a359d90c54eac",
+            "9ac581f6e9ef1073",
+            "8616905f43512249",
+            "76c5a4d65d57b1cd"
+        ],
+        "x": 435,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8f27cd7afbe24f53",
+        "type": "link out",
+        "z": "f6b1f44606ded4ce",
+        "name": "Info message trigger",
+        "mode": "link",
+        "links": [
+            "bf6aa87c90fb18ae"
+        ],
+        "x": 705,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "9b52605823eb5f12",
+        "type": "inject",
+        "z": "f6b1f44606ded4ce",
+        "name": "Test info",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "AAAA: /l3ki",
+        "payloadType": "str",
+        "x": 160,
+        "y": 840,
+        "wires": [
+            [
+                "6402fdd846bd8f09"
+            ]
+        ]
+    },
+    {
+        "id": "3279ea642b18277f",
+        "type": "function",
+        "z": "f6b1f44606ded4ce",
+        "name": "Process multiple message",
+        "func": "let message = msg.payload;\n\n// Split the message at each newline (\\r) character\nlet sections = message.split('\\r');\n\n// Regular expression to match and remove non-ASCII characters\nlet asciiOnlyRegex = /[^\\x20-\\x7E]/g;\n\n// Max length for each segment\nconst MAX_LENGTH = 198;\n\nfunction sendSection(i) {\n    if (i < sections.length) {\n        // Clean the section: remove non-ASCII characters\n        let cleanedSection = sections[i].replace(asciiOnlyRegex, '');\n\n        // Skip sending empty sections\n        if (cleanedSection === '') {\n            sendSection(i + 1);\n            return;\n        }\n\n        // Break the cleaned section into chunks of MAX_LENGTH\n        for (let start = 0; start < cleanedSection.length; start += MAX_LENGTH) {\n            let chunk = cleanedSection.substring(start, start + MAX_LENGTH);\n\n            // Add a newline (\\r) only if this is the final chunk\n            // of this section *and* it is not the last overall section\n            if (start + MAX_LENGTH >= cleanedSection.length && i < sections.length - 1) {\n                chunk += '\\r';\n            }\n\n            let newMsg = { ...msg };\n            newMsg.payload = chunk;\n            node.send(newMsg);\n        }\n\n        // Process the next section\n        sendSection(i + 1);\n    }\n}\n\n// Start processing\nsendSection(0);\n\n// Prevent the original message from being sent\nreturn null;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 160,
+        "wires": [
+            [
+                "40847e47bef0c4ed"
+            ]
+        ]
+    },
+    {
+        "id": "21dde60d66dcb77b",
+        "type": "delay",
+        "z": "f6b1f44606ded4ce",
+        "name": "Ident limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 240,
+        "y": 220,
+        "wires": [
+            [
+                "a5e30a95a8cf3b22"
+            ]
+        ]
+    },
+    {
+        "id": "1f2f7962135a74b6",
+        "type": "link in",
+        "z": "a6461831f8e53b6c",
+        "name": "Help in",
+        "links": [
+            "0434b2b9cedac352"
+        ],
+        "x": 175,
+        "y": 80,
+        "wires": [
+            [
+                "bee248d5305a0943"
+            ]
+        ]
+    },
+    {
+        "id": "cee8c66a02534dde",
+        "type": "link out",
+        "z": "a6461831f8e53b6c",
+        "name": "Help out",
+        "mode": "link",
+        "links": [
+            "c60cfdaafa8166da",
+            "706282d4eb48402e"
+        ],
+        "x": 735,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "bee248d5305a0943",
+        "type": "function",
+        "z": "a6461831f8e53b6c",
+        "name": "Help text",
+        "func": "msg.payload = \n'Use /l3k_ for all commands (eg: /l3km), except as noted.\\r' +\n'w=weather (eg: /l3kw), t=time and astro info, z=zen quote,\\r' +\n'n=BBC news. Add ,num for # articles (max 10). Add ,u for urls eg: /l3kn,5,u.\\r' +\n\"'ping' or 'test' as a full message (no prefix) return an ack.\\r\" +\n'Send i for more info. Some actions are globally rate limited.\\r' \n;\n \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 80,
+        "wires": [
+            [
+                "87d2e3f24bfc8d1e"
+            ]
+        ]
+    },
+    {
+        "id": "d5616129326c5158",
+        "type": "inject",
+        "z": "a6461831f8e53b6c",
+        "name": "Test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 230,
+        "y": 140,
+        "wires": [
+            [
+                "bee248d5305a0943"
+            ]
+        ]
+    },
+    {
+        "id": "87d2e3f24bfc8d1e",
+        "type": "delay",
+        "z": "a6461831f8e53b6c",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 580,
+        "y": 80,
+        "wires": [
+            [
+                "cee8c66a02534dde",
+                "861e0c2e827c9f5c"
+            ]
+        ]
+    },
+    {
+        "id": "861e0c2e827c9f5c",
+        "type": "debug",
+        "z": "a6461831f8e53b6c",
+        "name": "Help Text",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d1cc1f0fd106d9fc",
+        "type": "link in",
+        "z": "a6461831f8e53b6c",
+        "name": "Test / Ping in",
+        "links": [
+            "883383e65beb84c5"
+        ],
+        "x": 175,
+        "y": 260,
+        "wires": [
+            [
+                "5fa81aac87af1e08"
+            ]
+        ]
+    },
+    {
+        "id": "5fa81aac87af1e08",
+        "type": "function",
+        "z": "a6461831f8e53b6c",
+        "name": "Ping / Test reply",
+        "func": "let parts = msg.payload.split(\":\");\nlet location = global.get('location');\nlet currentTime = new Date().toLocaleTimeString(global.get('locale') || 'en-GB', { hour12: false });\n\nmsg.payload = `Hello ${parts[0].trim()}. ${parts[1].trim().charAt(0).toUpperCase() \n  + parts[1].trim().slice(1).toLowerCase()\n    } received in ${location} at ${currentTime}` + ' (local).';\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 260,
+        "wires": [
+            [
+                "92afcd3c7fb6c47f"
+            ]
+        ]
+    },
+    {
+        "id": "f83f4f2c205c1d28",
+        "type": "link out",
+        "z": "a6461831f8e53b6c",
+        "name": "Ping / test out",
+        "mode": "link",
+        "links": [
+            "c60cfdaafa8166da",
+            "706282d4eb48402e"
+        ],
+        "x": 735,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "92afcd3c7fb6c47f",
+        "type": "delay",
+        "z": "a6461831f8e53b6c",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "6",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 590,
+        "y": 260,
+        "wires": [
+            [
+                "f83f4f2c205c1d28",
+                "e22f4691ee55ffb6"
+            ]
+        ]
+    },
+    {
+        "id": "c397364b55c8049b",
+        "type": "comment",
+        "z": "a6461831f8e53b6c",
+        "name": "",
+        "info": "The regex in the function node on the first tab \nallows the ping test text to be returned for\nthe following:\n\nping, /ping, test or /test\n\n...only if there is nothing else in the message.\n",
+        "x": 120,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "c2f6ccd4a18be4e8",
+        "type": "inject",
+        "z": "a6461831f8e53b6c",
+        "name": "Test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "AAAA: /test?",
+        "payloadType": "str",
+        "x": 230,
+        "y": 320,
+        "wires": [
+            [
+                "5fa81aac87af1e08"
+            ]
+        ]
+    },
+    {
+        "id": "e22f4691ee55ffb6",
+        "type": "debug",
+        "z": "a6461831f8e53b6c",
+        "name": "Ping debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e85a359d90c54eac",
+        "type": "link in",
+        "z": "a6461831f8e53b6c",
+        "name": "Reset rate limits",
+        "links": [
+            "fd8417fd43a55e03"
+        ],
+        "x": 425,
+        "y": 180,
+        "wires": [
+            [
+                "87d2e3f24bfc8d1e",
+                "92afcd3c7fb6c47f"
+            ]
+        ]
+    },
+    {
+        "id": "33747d402cdbaf6a",
+        "type": "link in",
+        "z": "11117d242a0685d2",
+        "name": "Weather in",
+        "links": [
+            "7f81ef91a703c94c"
+        ],
+        "x": 95,
+        "y": 80,
+        "wires": [
+            [
+                "90bfa088ced85d49"
+            ]
+        ]
+    },
+    {
+        "id": "e6e4867fa16ebf41",
+        "type": "debug",
+        "z": "11117d242a0685d2",
+        "name": "Wind Dir",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7841e08d42788d7e",
+        "type": "debug",
+        "z": "11117d242a0685d2",
+        "name": "Feels Like",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "3908e5a79c79fac4",
+        "type": "debug",
+        "z": "11117d242a0685d2",
+        "name": "Wind Speed",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "dc7dc39c4f060615",
+        "type": "debug",
+        "z": "11117d242a0685d2",
+        "name": "Pressure",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c1331370896f3bdf",
+        "type": "debug",
+        "z": "11117d242a0685d2",
+        "name": "Summary",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "19f86e8e93c62965",
+        "type": "debug",
+        "z": "11117d242a0685d2",
+        "name": "Temp",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9123203c15729d47",
+        "type": "debug",
+        "z": "11117d242a0685d2",
+        "name": "Full String",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "e7a6e98c3cb0905f",
+        "type": "link out",
+        "z": "11117d242a0685d2",
+        "name": "Weather out",
+        "mode": "link",
+        "links": [
+            "c60cfdaafa8166da",
+            "706282d4eb48402e"
+        ],
+        "x": 855,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "90bfa088ced85d49",
+        "type": "trigger",
+        "z": "11117d242a0685d2",
+        "name": "Trigger",
+        "op1": "true",
+        "op2": "",
+        "op1type": "bool",
+        "op2type": "nul",
+        "duration": "250",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 200,
+        "y": 80,
+        "wires": [
+            [
+                "c6eba1a663d294dc"
+            ]
+        ]
+    },
+    {
+        "id": "e4d989558c06d188",
+        "type": "astrodata dayvalues",
+        "z": "11117d242a0685d2",
+        "name": "",
+        "lon": "",
+        "lat": "",
+        "height": "",
+        "lang": "en",
+        "offset": 0,
+        "x": 460,
+        "y": 480,
+        "wires": [
+            [
+                "e3fd1651545d5bb7"
+            ]
+        ]
+    },
+    {
+        "id": "bdf8d2fc0d658111",
+        "type": "link in",
+        "z": "11117d242a0685d2",
+        "name": "Astro in",
+        "links": [
+            "e7146af9f0440882"
+        ],
+        "x": 135,
+        "y": 480,
+        "wires": [
+            [
+                "6363f243f9702b29"
+            ]
+        ]
+    },
+    {
+        "id": "0c70a2947f201e38",
+        "type": "debug",
+        "z": "11117d242a0685d2",
+        "name": "Time",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "65143d4e926c84b2",
+        "type": "inject",
+        "z": "11117d242a0685d2",
+        "name": "Test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 190,
+        "y": 420,
+        "wires": [
+            [
+                "6363f243f9702b29"
+            ]
+        ]
+    },
+    {
+        "id": "e3fd1651545d5bb7",
+        "type": "function",
+        "z": "11117d242a0685d2",
+        "name": "Astro message",
+        "func": "// Ensure the data is available in msg (sunRise and sunSet)\nlet sunrise = msg.sunRise;   \nlet sunset = msg.sunSet; \n\n// Get the current local time in 24-hour format. Falls back to en-GB if the locale is not set\nlet currentTime = new Date().toLocaleTimeString(global.get('locale') || 'en-GB', { hour12: false });\n\n// Get the current UTC time in 24-hour format\nlet utcTime = new Date().toUTCString().split(' ')[4];  // Get the time part from UTC string\n\nmsg.payload = global.get('location') + \n\": Local time: \" + currentTime + \n\". UTC time: \"   + utcTime + \n\". Sunrise: \"    + sunrise + \n\". Sunset: \"     + sunset + \".\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 480,
+        "wires": [
+            [
+                "0c70a2947f201e38",
+                "e7a6e98c3cb0905f"
+            ]
+        ]
+    },
+    {
+        "id": "6363f243f9702b29",
+        "type": "function",
+        "z": "11117d242a0685d2",
+        "name": "Get params",
+        "func": "// Retrieve global variables to be used in the call to astrodata\nmsg.lat    = global.get('latitude');\nmsg.lon    = global.get('longitude');\nmsg.height = global.get('height');\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 480,
+        "wires": [
+            [
+                "e4d989558c06d188"
+            ]
+        ]
+    },
+    {
+        "id": "9d3f1618ef3d1aad",
+        "type": "inject",
+        "z": "11117d242a0685d2",
+        "name": "Test",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "c6eba1a663d294dc"
+            ]
+        ]
+    },
+    {
+        "id": "c6eba1a663d294dc",
+        "type": "function",
+        "z": "11117d242a0685d2",
+        "name": "Open Meteo",
+        "func": "// Get coordinates from global context, fallback to centre of London\nlet lat = global.get('latitude') || 51.5074;\nlet lon = global.get('longitude') || -0.1278;\n\n// Set the URL with additional parameters\nmsg.url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl&timezone=Europe/London`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 80,
+        "wires": [
+            [
+                "0f12da18c7d5c8bf"
+            ]
+        ]
+    },
+    {
+        "id": "0f12da18c7d5c8bf",
+        "type": "http request",
+        "z": "11117d242a0685d2",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "persist": false,
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 390,
+        "y": 140,
+        "wires": [
+            [
+                "98cf6b3a2cee9192"
+            ]
+        ]
+    },
+    {
+        "id": "98cf6b3a2cee9192",
+        "type": "function",
+        "z": "11117d242a0685d2",
+        "name": "Weather Info Open-Meteo",
+        "func": "// Debug: Check what we're receiving\nnode.warn(\"Full message: \" + JSON.stringify(msg));\nnode.warn(\"Payload type: \" + typeof msg.payload);\nnode.warn(\"Payload: \" + JSON.stringify(msg.payload));\n\n// Handle different response formats\nvar weatherData;\nif (typeof msg.payload === \"string\") {\n    // If it's a string, parse it as JSON\n    try {\n        weatherData = JSON.parse(msg.payload);\n    } catch (e) {\n        node.error(\"Failed to parse JSON: \" + e.message);\n        return null;\n    }\n} else if (typeof msg.payload === \"object\") {\n    // If it's already an object, use it directly\n    weatherData = msg.payload;\n} else {\n    node.error(\"Unexpected payload type: \" + typeof msg.payload);\n    return null;\n}\n\n// Check if we have the expected structure\nif (!weatherData || !weatherData.current) {\n    node.error(\"Invalid payload structure. Expected current weather data\");\n    node.error(\"Available keys: \" + Object.keys(weatherData || {}));\n    return null;\n}\n\nvar airPressure = weatherData.current.pressure_msl;\nvar windAngle = weatherData.current.wind_direction_10m;\nvar windCompass = {};\nvar windSpeed = {};\nvar weatherDescription = {};\nvar airTemperature = {};\nvar feelsLikeTemp = {};\nvar fullWeatherString = {};\nvar msgPressure = {};\nvar weatherCodeOutput = {};\n\nvar compassDirections = [\"North\", \"North-East\", \"East\", \"South-East\", \"South\", \"South-West\", \"West\", \"North-West\"];\n\nvar weatherDescriptions = {\n    0: \"Clear sky\",\n    1: \"Mainly clear\",\n    2: \"Partly cloudy\",\n    3: \"Overcast\",\n    45: \"Fog\",\n    48: \"Depositing rime fog\",\n    51: \"Light drizzle\",\n    53: \"Moderate drizzle\",\n    55: \"Dense drizzle\",\n    61: \"Slight rain\",\n    63: \"Moderate rain\",\n    65: \"Heavy rain\",\n    71: \"Slight snow\",\n    73: \"Moderate snow\",\n    75: \"Heavy snow\",\n    95: \"Thunderstorm\"\n};\n\n// Calculate direction and store in object\nvar windDirectionText = compassDirections[Math.round(((windAngle %= 360) < 0 ? windAngle + 360 : windAngle) / 45) % 8];\nwindCompass = { payload: windDirectionText };\n\n// Wind speed in mph, rounded to nearest 0.5\nwindSpeed = {\n    payload: Math.round(weatherData.current.wind_speed_10m * 0.621371 * 2) / 2\n};\n\nmsgPressure.payload = airPressure;\nairTemperature.payload = weatherData.current.temperature_2m.toFixed(1) + \"C\";\n\n// Handle apparent temperature\nfeelsLikeTemp.payload = weatherData.current.apparent_temperature ?\n    weatherData.current.apparent_temperature.toFixed(1) + \"C\" :\n    airTemperature.payload;\n\n// Get weather description from code\nvar weatherCode = weatherData.current.weather_code;\nweatherDescription.payload = weatherDescriptions[weatherCode] || (\"Weather code \" + weatherCode);\n\n// Weather code as separate output\nweatherCodeOutput.payload = weatherCode;\n\n// Assemble final string\nvar locationName = global.get(\"location\") || \"Location\";\nfullWeatherString.payload = locationName + \": \" +\n    weatherDescription.payload +\n    \". Temp: \" + airTemperature.payload +\n    \". Feels like: \" + feelsLikeTemp.payload +\n    \". Wind: \" + windSpeed.payload + \"mph \" + windCompass.payload +\n    \". Pressure: \" + msgPressure.payload + \"mb\";\n\nreturn [windCompass, windSpeed, weatherDescription, msgPressure, airTemperature, feelsLikeTemp, weatherCodeOutput,fullWeatherString];",
+        "outputs": 8,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 140,
+        "wires": [
+            [
+                "e6e4867fa16ebf41"
+            ],
+            [
+                "3908e5a79c79fac4"
+            ],
+            [
+                "c1331370896f3bdf"
+            ],
+            [
+                "dc7dc39c4f060615"
+            ],
+            [
+                "19f86e8e93c62965"
+            ],
+            [
+                "7841e08d42788d7e"
+            ],
+            [
+                "536f3966f4bb0592",
+                "2f5e85a4ba6970cf"
+            ],
+            [
+                "9123203c15729d47",
+                "e7a6e98c3cb0905f"
+            ]
+        ]
+    },
+    {
+        "id": "536f3966f4bb0592",
+        "type": "debug",
+        "z": "11117d242a0685d2",
+        "name": "Weather Code",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "2f5e85a4ba6970cf",
+        "type": "link out",
+        "z": "11117d242a0685d2",
+        "name": "Weather code",
+        "mode": "link",
+        "links": [],
+        "x": 855,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "6ca24a8b942a873c",
+        "type": "inject",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Check for warning",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1800",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "2",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 170,
+        "y": 100,
+        "wires": [
+            [
+                "c70bd91490b2b187",
+                "c95f953fe9376bd7"
+            ]
+        ]
+    },
+    {
+        "id": "29d18cd1ad8f8c81",
+        "type": "function",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Generate a warning",
+        "func": "const feed = msg.payload;\n\n// Check for a valid RSS structure with at least one item\nif (\n    !feed.rss ||\n    !Array.isArray(feed.rss.channel) ||\n    feed.rss.channel.length === 0 ||\n    !Array.isArray(feed.rss.channel[0].item) ||\n    feed.rss.channel[0].item.length === 0\n) {\n    return null; // No warnings — return no output\n}\n\n// Extract the first warning item\nconst firstItem = feed.rss.channel[0].item[0];\n\n// Extract and trim the description\nlet description = firstItem.description?.[0]?.trim() || \"\";\ndescription = description.substring(0, 198);\n\n// Extract the URL from the guid field\nconst url = firstItem.guid?.[0]?._ || \"\";\n\n// Assign to message fields\nmsg.payload = description;\nmsg.message = description;\nmsg.url = url;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 160,
+        "wires": [
+            [
+                "d9261e559f75e742"
+            ]
+        ]
+    },
+    {
+        "id": "02bf1fccf18cb37d",
+        "type": "inject",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Test short  msg",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"rss\":{\"channel\":[{\"item\":[{\"title\":[\"TEST MESSAGE Yellow warning of thunderstorm\"],\"description\":[\"TEST MESSAGE Yellow warning of thunderstorms affecting London & South East England: valid from 1000 Wed 03 Sep to 1900 Wed 03 Sep.\"],\"guid\":[{\"_\":\"https://example.com/yellow-thunderstorm\"}]}]}]}}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "29d18cd1ad8f8c81"
+            ]
+        ]
+    },
+    {
+        "id": "a60c4cc004922b3b",
+        "type": "xml",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 650,
+        "y": 100,
+        "wires": [
+            [
+                "29d18cd1ad8f8c81"
+            ]
+        ]
+    },
+    {
+        "id": "c0dc5fe0d0b711e0",
+        "type": "debug",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Debug Met Office",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "d9261e559f75e742",
+        "type": "function",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Get Tinyurl",
+        "func": "// Get the long URL from msg.payload\nlet longUrl = msg.url;\n\n// Check if the long URL is valid\nif (!longUrl || typeof longUrl !== 'string') {\n    node.error(\"Invalid URL\", msg);\n    return null;  // Exit the function if the URL is invalid\n}\n\n// Check if the URL contains a '?'\nlet questionMarkIndex = longUrl.indexOf('?');\n\n// If it contains a '?', remove everything after it, including the '?' itself\nif (questionMarkIndex !== -1) {\n    longUrl = longUrl.substring(0, questionMarkIndex);  // Keep the part before '?'\n}\n\n// Prepare the URL for TinyURL\nlet tinyUrlApi = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`;\n\n// Set the HTTP request configuration\nmsg.url = tinyUrlApi;  // TinyURL API endpoint\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 160,
+        "wires": [
+            [
+                "de6ffa63be64466c"
+            ]
+        ]
+    },
+    {
+        "id": "de6ffa63be64466c",
+        "type": "http request",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 430,
+        "y": 220,
+        "wires": [
+            [
+                "553b2999ed4e460c"
+            ]
+        ]
+    },
+    {
+        "id": "553b2999ed4e460c",
+        "type": "function",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Assemble message",
+        "func": "let message = msg.message || \"\";\nlet tinyurl = msg.payload || \"\";\n\nlet combined = message + \" \" + tinyurl;\n\nif (combined.length > 198) {\n    // Reserve space for two dots and the space before tinyurl\n    let maxMessageLength = 198 - (tinyurl.length + 1 + 2); // +1 for space, +2 for \"..\"\n\n    // Truncate message and add \"..\"\n    message = message.substring(0, maxMessageLength).trim() + \"..\";\n\n    combined = message + \" \" + tinyurl;\n}\n\nmsg.payload = combined;\nmsg.topic = \"REDTastic: SEVERE WEATHER WARNING\"\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 220,
+        "wires": [
+            [
+                "c0dc5fe0d0b711e0",
+                "02131ee8edc8efac"
+            ]
+        ]
+    },
+    {
+        "id": "1a37bfea2e499b13",
+        "type": "inject",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Test long msg",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"rss\":{\"channel\":[{\"item\":[{\"title\":[\"TEST MESSAGE Amber warning of heavy rain and flooding\"],\"description\":[\"TEST MESSAGE Amber warning of heavy rain and flooding affecting multiple counties including Herefordshire, Shropshire, Staffordshire, Worcestershire, and surrounding areas. Rain expected to be persistent and heavy from early morning through late evening, causing potential road closures, power outages, and disruption to public transport services.\"],\"guid\":[{\"_\":\"https://example.com/amber-heavy-rain\"}]}]}]}}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 240,
+        "wires": [
+            [
+                "29d18cd1ad8f8c81"
+            ]
+        ]
+    },
+    {
+        "id": "02131ee8edc8efac",
+        "type": "link out",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Severe weather out",
+        "mode": "link",
+        "links": [
+            "c60cfdaafa8166da",
+            "c7e72d3686283fec",
+            "706282d4eb48402e"
+        ],
+        "x": 795,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "715a467e9e27d5f4",
+        "type": "comment",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Notes: Severe weather warnings",
+        "info": "This flow runs regularly via inject node \nauto triggering.\n\nThe first part of the flow here \npicks up severe weather info from the UK\nMet Office using one of the regional\nRSS feeds from the list below.\n\nThe flow will need to be modified if\nthe warning needs to come from a\ndifferent weather service or the Met Office \nchanges the format of their warninbgs.\n\nList of Met Office RSS feeds:\n\nhttps://weather.metoffice.gov.uk/guides/rss\n\nThis flow sends a Tx message when a warning is\navailable, and it can also send an email - enable \nthis link out if you wish. \n\nThe second part of this flow gets thunderstorm and\nhigh wind warnings from Open-Meteo.\n\nRemember to set your latitude and longitude on the \nfirst tab so that the weather is picked up for the\nright place. \n\nDisable the Async out node on the first tab while \ntesting any changes made here. Re-enable it when you\nare sure things are working as expected. \n\nRegional customisations may be available on the \nGitHub project page: \nhttps://github.com/linker3000/REDTastic",
+        "x": 170,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "c70bd91490b2b187",
+        "type": "http request",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Met office http request",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://weather.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/se",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 440,
+        "y": 100,
+        "wires": [
+            [
+                "a60c4cc004922b3b"
+            ]
+        ]
+    },
+    {
+        "id": "ee587cf2cd6ec995",
+        "type": "inject",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Test no warning",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"rss\":{\"channel\":[{\"title\":[\"Met Office warnings for region\"],\"description\":[\"Weather warnings of severe and extreme weather from the Met Office\"]}]}}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "29d18cd1ad8f8c81"
+            ]
+        ]
+    },
+    {
+        "id": "c95f953fe9376bd7",
+        "type": "function",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Format Open-Meteo call",
+        "func": "// Get coordinates from global context, fallback to centre of London\nlet lat = global.get('latitude') || 51.5074;\nlet lon = global.get('longitude') || -0.1278;\n\n// Get relevant weather info from call to Open-Meteo\nmsg.url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=weather_code,wind_speed_10m&timezone=Europe/London`;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 380,
+        "wires": [
+            [
+                "2b460b14b4d99a17"
+            ]
+        ]
+    },
+    {
+        "id": "2b460b14b4d99a17",
+        "type": "http request",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "persist": false,
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 380,
+        "wires": [
+            [
+                "1c7db4e1522c3409"
+            ]
+        ]
+    },
+    {
+        "id": "e93407a1e17795e8",
+        "type": "inject",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Boring weather",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 120,
+        "y": 400,
+        "wires": [
+            [
+                "c95f953fe9376bd7"
+            ]
+        ]
+    },
+    {
+        "id": "1c7db4e1522c3409",
+        "type": "function",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Check for thunderstorms and high wind",
+        "func": "// Handle different response formats from HTTP request\nvar weatherData;\nif (typeof msg.payload === \"string\") {\n    try {\n        weatherData = JSON.parse(msg.payload);\n    } catch (e) {\n        node.error(\"Failed to parse JSON: \" + e.message);\n        return null;\n    }\n} else if (typeof msg.payload === \"object\") {\n    weatherData = msg.payload;\n} else {\n    node.error(\"Unexpected payload type: \" + typeof msg.payload);\n    return null;\n}\n\n// Check if we have the expected structure\nif (!weatherData || !weatherData.current) {\n    node.error(\"Invalid payload structure. Expected current weather data\");\n    return null;\n}\n\n// Extract weather data\nvar weatherCode = weatherData.current.weather_code;\nvar windSpeed = weatherData.current.wind_speed_10m;\nvar region = global.get('region') || 'your area';\n\nvar hasThunderstorms = weatherCode >= 95;\nvar hasStrongWinds = windSpeed > 50;\n\n// Check all combinations\nif (hasThunderstorms && hasStrongWinds) {\n    var windSpeedMph = Math.round(windSpeed * 0.621371 * 2) / 2;\n    msg.payload = \"Thunderstorms and strong winds forecast in the region around \" + region + \" (\" + windSpeedMph + \" mph). (Open-Meteo)\";\n    return msg;\n} else if (hasThunderstorms) {\n    msg.payload = \"Thunderstorms forecast in the region around \" + region + \". (Open-Meteo)\";\n    return msg;\n} else if (hasStrongWinds) {\n    var windSpeedMph = Math.round(windSpeed * 0.621371 * 2) / 2;\n    msg.payload = \"Strong winds forecast in the region around \" + region + \" (\" + windSpeedMph + \" mph). (Open-Meteo)\";\n    return msg;\n}\n\n// No severe weather detected\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 440,
+        "wires": [
+            [
+                "faf02ef8c4026ca0",
+                "75c6a684a3a48890"
+            ]
+        ]
+    },
+    {
+        "id": "faf02ef8c4026ca0",
+        "type": "debug",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Open-Meteo thunder/wind",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "75c6a684a3a48890",
+        "type": "link out",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Open-Meteo weather warning",
+        "mode": "link",
+        "links": [
+            "c60cfdaafa8166da",
+            "c7e72d3686283fec",
+            "706282d4eb48402e"
+        ],
+        "x": 795,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "dc260526cb9131b0",
+        "type": "inject",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Test thunder",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"current\":{\"weather_code\":95,\"wind_speed_10m\":25}}",
+        "payloadType": "json",
+        "x": 130,
+        "y": 440,
+        "wires": [
+            [
+                "1c7db4e1522c3409"
+            ]
+        ]
+    },
+    {
+        "id": "548eed57eb6ae338",
+        "type": "inject",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Test windspeed",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"current\":{\"weather_code\":2,\"wind_speed_10m\":65}}",
+        "payloadType": "json",
+        "x": 140,
+        "y": 480,
+        "wires": [
+            [
+                "1c7db4e1522c3409"
+            ]
+        ]
+    },
+    {
+        "id": "c6ecb60b7ed75e19",
+        "type": "inject",
+        "z": "56cc0dfbc69f9b0b",
+        "name": "Test both",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"current\":{\"weather_code\":96,\"wind_speed_10m\":75}}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 520,
+        "wires": [
+            [
+                "1c7db4e1522c3409"
+            ]
+        ]
+    },
+    {
+        "id": "12e48ce2bd05723e",
+        "type": "link in",
+        "z": "5af70842da42d7a1",
+        "name": "News in",
+        "links": [
+            "073ff9ddbab1960b"
+        ],
+        "x": 125,
+        "y": 120,
+        "wires": [
+            [
+                "624951b3adc30a90"
+            ]
+        ]
+    },
+    {
+        "id": "6418c4731de72cfc",
+        "type": "link out",
+        "z": "5af70842da42d7a1",
+        "name": "News out",
+        "mode": "link",
+        "links": [
+            "c60cfdaafa8166da",
+            "706282d4eb48402e"
+        ],
+        "x": 1065,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "da575ccb4aa0bf94",
+        "type": "feedparser-simple",
+        "z": "5af70842da42d7a1",
+        "name": "Get RSS feed",
+        "x": 760,
+        "y": 120,
+        "wires": [
+            [
+                "ce443f9db6273a15"
+            ]
+        ]
+    },
+    {
+        "id": "c522f21de3e6a5dc",
+        "type": "trigger",
+        "z": "5af70842da42d7a1",
+        "name": "Set RSS feed url",
+        "op1": "",
+        "op2": "http://feeds.bbci.co.uk/news/rss.xml",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "250",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 410,
+        "y": 140,
+        "wires": [
+            [
+                "d84bcac6a9fa7ff4",
+                "da575ccb4aa0bf94"
+            ]
+        ]
+    },
+    {
+        "id": "db69a9bd39b42bbd",
+        "type": "debug",
+        "z": "5af70842da42d7a1",
+        "name": "News output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "ea7a2215b7ce4763",
+        "type": "inject",
+        "z": "5af70842da42d7a1",
+        "name": "Test 5",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "/l3kn,5",
+        "payloadType": "str",
+        "x": 150,
+        "y": 300,
+        "wires": [
+            [
+                "624951b3adc30a90"
+            ]
+        ]
+    },
+    {
+        "id": "ce443f9db6273a15",
+        "type": "function",
+        "z": "5af70842da42d7a1",
+        "name": "Limit articles used",
+        "func": "// Retrieve the processed count from flow context (initialize to 0 if not set)\nlet count = flow.get('processedCount') || 0; \n\nlet numItems = flow.get('numItems') || 5;\n\n// Process the message only if we haven't processed the required number of items yet\nif (count < numItems) {\n    count += 1;  // Increment the count for each processed item\n\n    let messageContent = msg.payload;\n\n    // Truncate the message if it's longer than 198 characters\n    if (messageContent.length > 198) {\n        messageContent = messageContent.slice(0, 198);  \n    }\n\n    msg.article = messageContent;\n\n    // Update the processed count in flow context so it persists across messages\n    flow.set('processedCount', count);\n\n    return msg;\n} else {\n    return null;  // Stop processing further messages for this batch\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 180,
+        "wires": [
+            [
+                "8e4141821fa50cda"
+            ]
+        ]
+    },
+    {
+        "id": "0f2851b5a394b6c5",
+        "type": "inject",
+        "z": "5af70842da42d7a1",
+        "name": "Test 99",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "/l3kn,99",
+        "payloadType": "str",
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "624951b3adc30a90"
+            ]
+        ]
+    },
+    {
+        "id": "d84bcac6a9fa7ff4",
+        "type": "delay",
+        "z": "5af70842da42d7a1",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "4",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 60,
+        "wires": [
+            [
+                "da575ccb4aa0bf94"
+            ]
+        ]
+    },
+    {
+        "id": "4782a0de29bfce46",
+        "type": "change",
+        "z": "5af70842da42d7a1",
+        "name": "Extract URL",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "topic",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 240,
+        "wires": [
+            [
+                "b1b0b42f975c8365"
+            ]
+        ]
+    },
+    {
+        "id": "9a677ccdc34b218d",
+        "type": "http request",
+        "z": "5af70842da42d7a1",
+        "name": "Get TinyURL",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 670,
+        "y": 300,
+        "wires": [
+            [
+                "2c8e4b8e60cac7f7"
+            ]
+        ]
+    },
+    {
+        "id": "b1b0b42f975c8365",
+        "type": "function",
+        "z": "5af70842da42d7a1",
+        "name": "Format request",
+        "func": "// Get the long URL from msg.payload\nlet longUrl = msg.payload;\n\n// Check if the long URL is valid\nif (!longUrl || typeof longUrl !== 'string') {\n    node.error(\"Invalid URL\", msg);\n    return null;  // Exit the function if the URL is invalid\n}\n\n// Check if the URL contains a '?'\nlet questionMarkIndex = longUrl.indexOf('?');\n\n// If it contains a '?', remove everything after it, including the '?' itself\nif (questionMarkIndex !== -1) {\n    longUrl = longUrl.substring(0, questionMarkIndex);  // Keep the part before '?'\n}\n\n// Prepare the URL for TinyURL\nlet tinyUrlApi = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`;\n\n// Set the HTTP request configuration\nmsg.url = tinyUrlApi;  // TinyURL API endpoint\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 240,
+        "wires": [
+            [
+                "9a677ccdc34b218d"
+            ]
+        ]
+    },
+    {
+        "id": "0274974da1676251",
+        "type": "inject",
+        "z": "5af70842da42d7a1",
+        "name": "Test 1 with URL",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "/l3kn,1,u",
+        "payloadType": "str",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "624951b3adc30a90"
+            ]
+        ]
+    },
+    {
+        "id": "a7704be4565efefa",
+        "type": "function",
+        "z": "5af70842da42d7a1",
+        "name": "Set \"append URL\" flag",
+        "func": "let inputString = msg.payload;\n\n// Check if the string contains \",u\" (case-insensitive)\nlet hasTinyUrl = inputString.toLowerCase().includes(',u');\n\nflow.set('tinyurlFlag', hasTinyUrl ? 1 : 0);\n\n// Just in case the message is wanted for other nodes...\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2c8e4b8e60cac7f7",
+        "type": "function",
+        "z": "5af70842da42d7a1",
+        "name": "Assemble output",
+        "func": "// Retrieve the article text (msg.article) and TinyURL (msg.payload)\nlet articleText = '- ' + msg.article;\nlet tinyUrl = msg.payload;\n\nlet maxLength = 196;\n\n// Retrieve the flow context variable that indicates if we should append the TinyURL\nlet tinyurlFlag = flow.get('tinyurlFlag') || 0;  // Default to 0 if not set\n\n// If tinyurlFlag is 1, append the TinyURL to the article text\nif (tinyurlFlag === 1) {\n    // Calculate remaining space for the article text after appending the TinyURL and a space\n    let remainingSpace = maxLength - tinyUrl.length - 1;  // 1 for the space between TinyURL and article\n\n    if (remainingSpace < articleText.length) {\n        articleText = articleText.substring(0, remainingSpace);  // Truncate the article\n    }\n\n    // Combine the TinyURL and the article text\n    msg.payload = articleText + ' ' + tinyUrl + '\\n';\n} else {\n    // If tinyurlFlag is 0, just return the article text, truncated if necessary\n    msg.payload = articleText.substring(0, maxLength) + '\\n';\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 300,
+        "wires": [
+            [
+                "db69a9bd39b42bbd",
+                "6418c4731de72cfc"
+            ]
+        ]
+    },
+    {
+        "id": "c3938e10ebbadcd4",
+        "type": "inject",
+        "z": "5af70842da42d7a1",
+        "name": "Test no num",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "/l3kn",
+        "payloadType": "str",
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "624951b3adc30a90"
+            ]
+        ]
+    },
+    {
+        "id": "874a5b70a15ee4c5",
+        "type": "inject",
+        "z": "5af70842da42d7a1",
+        "name": "Test 1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "/l3kn,1",
+        "payloadType": "str",
+        "x": 150,
+        "y": 260,
+        "wires": [
+            [
+                "624951b3adc30a90"
+            ]
+        ]
+    },
+    {
+        "id": "8b7cab68e66051b9",
+        "type": "function",
+        "z": "5af70842da42d7a1",
+        "name": "Set number of articles",
+        "func": "// Parse input to set numItems\nlet inputString = msg.payload.trim();\nlet numItems = 5;  // Default numItems value\n\n// Check if the string contains a comma followed by a number anywhere in the string\nlet regex = /,(\\d+)/;\nlet match = inputString.match(regex);\n\nif (match) {\n    numItems = parseInt(match[1]);\n    numItems = Math.min(numItems, 10);  // Limit numItems to 10\n}\n\nflow.set('numItems', numItems);\n\n// Reset the processed count to 0 (start fresh for the new batch)\nflow.set('processedCount', 0);\n\n// Reset the 'alreadyProcessed' flag so that it doesn't block future messages\nflow.set('alreadyProcessed', false);\n\n// Store numItems in msg for later use\nmsg.numItems = numItems;\nmsg.payload = numItems;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9ddfebfc98f30c27",
+        "type": "inject",
+        "z": "5af70842da42d7a1",
+        "name": "Test 5 with URL",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "/l3kn,5,u",
+        "payloadType": "str",
+        "x": 120,
+        "y": 420,
+        "wires": [
+            [
+                "624951b3adc30a90"
+            ]
+        ]
+    },
+    {
+        "id": "8e4141821fa50cda",
+        "type": "delay",
+        "z": "5af70842da42d7a1",
+        "name": "Rate limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "2",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 860,
+        "y": 180,
+        "wires": [
+            [
+                "4782a0de29bfce46"
+            ]
+        ]
+    },
+    {
+        "id": "ff352e18651bfed5",
+        "type": "comment",
+        "z": "5af70842da42d7a1",
+        "name": "News notes",
+        "info": "The default setup picks up the news headlines \nand descriptions from the BBC RSS service.\n\nThis flow may need to be modified if you \nwant to pick up the news from other\nsources. If applicable, other news\nflows will be made available on the\nproject's GitHub page:\n\nhttps://github.com/linker3000/REDTastic\n\nIf you develop a new flow please share.",
+        "x": 150,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "9ac581f6e9ef1073",
+        "type": "link in",
+        "z": "5af70842da42d7a1",
+        "name": "Reset rate limits",
+        "links": [
+            "fd8417fd43a55e03"
+        ],
+        "x": 565,
+        "y": 60,
+        "wires": [
+            [
+                "d84bcac6a9fa7ff4"
+            ]
+        ]
+    },
+    {
+        "id": "a5a85597b3915432",
+        "type": "http request",
+        "z": "7b143e698a1078d6",
+        "name": "Get Zen Quote",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://zenquotes.io/api/random",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 280,
+        "y": 120,
+        "wires": [
+            [
+                "843a03627d79341b"
+            ]
+        ]
+    },
+    {
+        "id": "843a03627d79341b",
+        "type": "function",
+        "z": "7b143e698a1078d6",
+        "name": "Format Zen Quote",
+        "func": "let quote = msg.payload[0].q;  // The quote text\nlet author = msg.payload[0].a; // The author\n\nif (quote.trim().length === 0) {\n        return null;\n    }\n    \nmsg.payload = quote;\nif (msg.payload.length > 198) {\n        msg.payload = msg.payload.substring(0, 198); \n}   \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 120,
+        "wires": [
+            [
+                "2eccd039b5d418f0",
+                "28a9704387354cb5"
+            ]
+        ]
+    },
+    {
+        "id": "415b1ec9b62189fc",
+        "type": "inject",
+        "z": "7b143e698a1078d6",
+        "name": "Test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "a5a85597b3915432"
+            ]
+        ]
+    },
+    {
+        "id": "6ac787328c196728",
+        "type": "link out",
+        "z": "7b143e698a1078d6",
+        "name": "MOTD out",
+        "mode": "link",
+        "links": [
+            "c60cfdaafa8166da",
+            "706282d4eb48402e"
+        ],
+        "x": 845,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "bf0dc7c40638d2f0",
+        "type": "link in",
+        "z": "7b143e698a1078d6",
+        "name": "MOTD in",
+        "links": [
+            "4c5bddca6c13c7c2"
+        ],
+        "x": 95,
+        "y": 120,
+        "wires": [
+            [
+                "a5a85597b3915432"
+            ]
+        ]
+    },
+    {
+        "id": "2eccd039b5d418f0",
+        "type": "delay",
+        "z": "7b143e698a1078d6",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "4",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 120,
+        "wires": [
+            [
+                "6ac787328c196728"
+            ]
+        ]
+    },
+    {
+        "id": "28a9704387354cb5",
+        "type": "debug",
+        "z": "7b143e698a1078d6",
+        "name": "Zen quote",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "8616905f43512249",
+        "type": "link in",
+        "z": "7b143e698a1078d6",
+        "name": "Reset rate limits",
+        "links": [
+            "fd8417fd43a55e03"
+        ],
+        "x": 585,
+        "y": 60,
+        "wires": [
+            [
+                "2eccd039b5d418f0"
+            ]
+        ]
+    },
+    {
+        "id": "bf6aa87c90fb18ae",
+        "type": "link in",
+        "z": "7b143e698a1078d6",
+        "name": "Info msg in",
+        "links": [
+            "8f27cd7afbe24f53"
+        ],
+        "x": 135,
+        "y": 300,
+        "wires": [
+            [
+                "6ee8dc0fc9b2fe5e"
+            ]
+        ]
+    },
+    {
+        "id": "6ee8dc0fc9b2fe5e",
+        "type": "function",
+        "z": "7b143e698a1078d6",
+        "name": "Format info message",
+        "func": "if (global.get('info')) {\n    msg.payload = global.get('info');\n    return msg;\n} else {\n    return null; // Don't send anything if either value is missing or empty\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 300,
+        "wires": [
+            [
+                "f35a9f76cf172d69",
+                "74fa6b0c3ffd55cb"
+            ]
+        ]
+    },
+    {
+        "id": "f35a9f76cf172d69",
+        "type": "delay",
+        "z": "7b143e698a1078d6",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "4",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 300,
+        "wires": [
+            [
+                "6a1180661079f838"
+            ]
+        ]
+    },
+    {
+        "id": "76c5a4d65d57b1cd",
+        "type": "link in",
+        "z": "7b143e698a1078d6",
+        "name": "Reset rate limits",
+        "links": [
+            "fd8417fd43a55e03"
+        ],
+        "x": 595,
+        "y": 260,
+        "wires": [
+            [
+                "f35a9f76cf172d69"
+            ]
+        ]
+    },
+    {
+        "id": "6a1180661079f838",
+        "type": "link out",
+        "z": "7b143e698a1078d6",
+        "name": "Info msg out",
+        "mode": "link",
+        "links": [
+            "c60cfdaafa8166da",
+            "706282d4eb48402e"
+        ],
+        "x": 845,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "c2098aa6781d11f8",
+        "type": "inject",
+        "z": "7b143e698a1078d6",
+        "name": "Test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "6ee8dc0fc9b2fe5e"
+            ]
+        ]
+    },
+    {
+        "id": "74fa6b0c3ffd55cb",
+        "type": "debug",
+        "z": "7b143e698a1078d6",
+        "name": "Info message",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "4d7fc82575cbcb95",
+        "type": "ui-text-input",
+        "z": "4e6cdcf3368ac5dc",
+        "group": "b9c7f6fc95eadf37",
+        "name": "Message field",
+        "label": "Message",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "text",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": false,
+        "sendOnDelay": false,
+        "sendOnBlur": false,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": true,
+        "sendOnClear": true,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 760,
+        "y": 80,
+        "wires": [
+            [
+                "03365fd9c0f4a635",
+                "80ddbabacf92064c"
+            ]
+        ]
+    },
+    {
+        "id": "03365fd9c0f4a635",
+        "type": "function",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Sanitize message",
+        "func": "if (typeof msg.payload === 'string') {\n    // Remove non-ASCII characters\n    msg.payload = msg.payload.replace(/[^\\x00-\\x7F]/g, '');\n    // Limit length to 198 characters\n    msg.payload = msg.payload.slice(0, 198);\n    // Trim whitespace and drop if empty\n    if (msg.payload.trim() === '') {\n        return null; // message is empty, do not send\n    }\n}\n\n// Get the current local time in 24-hour format\nlet currentTime = new Date().toLocaleTimeString(global.get('locale') || 'en-GB', { hour12: false });\n\n// Format the timestamp as DD-MMM HH:MM\nlet now = new Date();\nlet day = String(now.getDate()).padStart(2, '0');\nlet monthNames = [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\n    \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"];\nlet month = monthNames[now.getMonth()];\n\n// Extract HH:MM from currentTime (HH:MM:SS)\nlet hhmm = currentTime.split(':').slice(0, 2).join(':');\n\n// Create second message with timestamp\nlet msgWithTimestamp = { ...msg };\nmsgWithTimestamp.payload = `${day}-${month} ${hhmm} ${msg.payload}`;\n\n// Return both outputs: first is original, second is with timestamp\nreturn [msg, msgWithTimestamp];\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "0949713eda12d68e"
+            ],
+            [
+                "0891f4d5c2c15964"
+            ]
+        ]
+    },
+    {
+        "id": "40f5683dc13e1deb",
+        "type": "link out",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Message out",
+        "mode": "link",
+        "links": [
+            "c60cfdaafa8166da"
+        ],
+        "x": 875,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "80ddbabacf92064c",
+        "type": "trigger",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Clear text field",
+        "op1": "",
+        "op2": "",
+        "op1type": "str",
+        "op2type": "nul",
+        "duration": "10",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "4c37df48cf48cada"
+            ]
+        ]
+    },
+    {
+        "id": "7f5b7ae422eee4c0",
+        "type": "link in",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Dashboard in",
+        "links": [
+            "c4546c8089d32827"
+        ],
+        "x": 225,
+        "y": 340,
+        "wires": [
+            [
+                "3cc977e4836c966f"
+            ]
+        ]
+    },
+    {
+        "id": "4c37df48cf48cada",
+        "type": "change",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Set empty string",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 80,
+        "wires": [
+            [
+                "4d7fc82575cbcb95"
+            ]
+        ]
+    },
+    {
+        "id": "89eef56a019fe679",
+        "type": "inject",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Clear field",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "80ddbabacf92064c"
+            ]
+        ]
+    },
+    {
+        "id": "0949713eda12d68e",
+        "type": "delay",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 740,
+        "y": 160,
+        "wires": [
+            [
+                "40f5683dc13e1deb"
+            ]
+        ]
+    },
+    {
+        "id": "22bd7813fc931e84",
+        "type": "function",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Random test data",
+        "func": "function generateRandomString() {\n    const months = [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"];\n    \n    // Random day (01-31)\n    const day = String(Math.floor(Math.random() * 31) + 1).padStart(2, '0');\n    \n    // Random month\n    const month = months[Math.floor(Math.random() * months.length)];\n    \n    // Random year (1900-2099)\n    const year = Math.floor(Math.random() * 200) + 1900;\n    \n    // Current local time in 24-hour format\n    let currentTime = new Date().toLocaleTimeString(global.get('locale') || 'en-GB', { hour12: false });\n    // Extract HH:MM\n    let hhmm = currentTime.split(':').slice(0, 2).join(':');\n    \n    // Random length between 90 and 190\n    const randomLength = Math.floor(Math.random() * (190 - 90 + 1)) + 90;\n    \n    // Generate random string of randomLength\n    let randomText = '';\n    while (randomText.length < randomLength) {\n        randomText += Math.random().toString(36).substring(2);\n    }\n    randomText = randomText.substring(0, randomLength); // trim to exact length\n    \n    // Format: literal 'AAAA ' + date + HH:MM + ': ' + random text\n    return `AAAA ${day}-${month}-${year} ${hhmm}: ${randomText}`;\n}\n\nmsg.payload = generateRandomString();\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 400,
+        "wires": [
+            [
+                "0891f4d5c2c15964"
+            ]
+        ]
+    },
+    {
+        "id": "e10ac434af54977f",
+        "type": "inject",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 210,
+        "y": 400,
+        "wires": [
+            [
+                "22bd7813fc931e84"
+            ]
+        ]
+    },
+    {
+        "id": "1b480c3317773ce9",
+        "type": "ui-template",
+        "z": "4e6cdcf3368ac5dc",
+        "group": "b9c7f6fc95eadf37",
+        "page": "",
+        "ui": "",
+        "name": "Scrolling message area",
+        "order": 2,
+        "width": 6,
+        "height": 8,
+        "format": "<div ref=\"logContainer\"\n     style=\"height:415px;\n            overflow-y:auto;\n            background:#f5f5f5;\n            padding:8px;\n            border:1px solid #ccc;\n            font-family:monospace;\n            white-space:pre-wrap;\">\n  <div v-for=\"(line,index) in msg.payload\"\n       :key=\"index\"\n       style=\"display:block;\">\n    {{ line }}\n  </div>\n</div>\n\n<script>\n(function(scope){\n    scope.$watch('msg.payload', function(){\n        scope.$nextTick(function(){\n            const el = scope.$refs.logContainer;\n            if (el) el.scrollTop = el.scrollHeight;\n        });\n    });\n})(scope);\n</script>\n",
+        "storeOutMessages": false,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 750,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0891f4d5c2c15964",
+        "type": "function",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Line buffer",
+        "func": "// Accumulate log lines in node context\nlet log = context.get('log') || [];\n\n// Check for reset\nif (msg.reset === true) {\n    log = [];  // clear the log\n} else if (msg.payload !== undefined) {\n    let line = msg.payload;\n    log.push(line);\n\n    // keep last 20 lines (optional)\n    if (log.length > 20) log.shift();\n}\n\n// store updated log in context\ncontext.set('log', log);\n\n// send the entire array to the template\nreturn { payload: log };\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 280,
+        "wires": [
+            [
+                "1b480c3317773ce9"
+            ]
+        ]
+    },
+    {
+        "id": "4d2ea96231ea753f",
+        "type": "inject",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Reset buffer",
+        "props": [
+            {
+                "p": "reset",
+                "v": "true",
+                "vt": "bool"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "27aed6a440979876"
+            ]
+        ]
+    },
+    {
+        "id": "27aed6a440979876",
+        "type": "ui-button",
+        "z": "4e6cdcf3368ac5dc",
+        "group": "b9c7f6fc95eadf37",
+        "name": "Clear messages",
+        "label": "Clear messages",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "emulateClick": true,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "reset",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 220,
+        "y": 280,
+        "wires": [
+            [
+                "977aada7c95f2fe0"
+            ]
+        ]
+    },
+    {
+        "id": "977aada7c95f2fe0",
+        "type": "change",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Reset signal",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "0891f4d5c2c15964"
+            ]
+        ]
+    },
+    {
+        "id": "3cc977e4836c966f",
+        "type": "function",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Format received msg",
+        "func": "// Get the current local time in 24-hour format\nlet currentTime = new Date().toLocaleTimeString(global.get('locale') || 'en-GB', { hour12: false });\n// Extract HH:MM\nlet hhmm = currentTime.split(':').slice(0, 2).join(':');\n\n// Get today's date\nconst now = new Date();\nconst day = String(now.getDate()).padStart(2, '0');\nconst monthNames = [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\n                    \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"];\nconst month = monthNames[now.getMonth()];\nconst year = now.getFullYear();\n\n// Split input at the first colon\nlet inboundID = \"\";\nlet messageText = \"\";\nif (typeof msg.payload === \"string\") {\n    const index = msg.payload.indexOf(':');\n    if (index !== -1) {\n        inboundID = msg.payload.substring(0, index).trim();   // ID before colon\n        messageText = msg.payload.substring(index + 1).trim(); // Text after colon\n    } else {\n        inboundID = \"ID\";             // fallback if no colon\n        messageText = msg.payload;\n    }\n}\n\n// Construct final message\nmsg.payload = `${inboundID} ${day}-${month}-${year} ${hhmm}: ${messageText}`;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 340,
+        "wires": [
+            [
+                "0891f4d5c2c15964"
+            ]
+        ]
+    },
+    {
+        "id": "da089019ba148745",
+        "type": "comment",
+        "z": "4e6cdcf3368ac5dc",
+        "name": "Dashboard notes",
+        "info": "The dashbaord shows received messages and also has a\nfield to send messages.\n\nIf the outbound message is longer than 198 characters,\nit will be split between separate messages. \n",
+        "x": 140,
+        "y": 40,
+        "wires": []
+    }
+]
