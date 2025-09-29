@@ -139,7 +139,8 @@ Note: Raspberry Pi configurations normally use UART0 for their async port, which
 https://nodered.org/docs/getting-started/raspberrypi
 
 ### Node-RED plugins
-Use the *Manage palette* menu to ensure the following plugins are installed before you import the REDTastic code. Some of these nodes will be installed by default. If you are NOT using a Raspberry Pi, you should identify whether any different plugins are needed to access the serial port on your device. NB: Make sure you install the Flowfuse dashboard (dashboard 2):
+Use the *Manage palette* menu to ensure the following plugins are installed before you import the REDTastic code. Some of these nodes will be installed by default. If you are NOT using a Raspberry Pi, you should identify whether any different plugins are needed to access the serial port on your device. Not all of these plugins may be being used in the current app.
+NB: Make sure you install the Flowfuse dashboard (dashboard 2):
 
     • flowfuse/node-red-dashboard
     • node-red-contrib-astrodata
