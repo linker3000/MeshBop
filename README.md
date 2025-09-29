@@ -55,7 +55,7 @@ The default setup includes:
 
 + A send / receive messaging dashboard.
 + A BBC RSS news feed.
-+ In inspirational (Zen) message.
++ An inspirational (Zen) message.
 + Local weather.
 + Local time.
 + Severe weather warnings.
