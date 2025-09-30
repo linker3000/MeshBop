@@ -66,7 +66,7 @@ Setting up a messaging system requires a Meshtastic node device to which there�
 
 **Important: Meshtastic firmware (currently) sends and receives TEXTMSG messages to / from the first (primary) Meshtastic channel, so if you want to use this application in a private group, that group MUST be set as the FIRST channel on the Meshtastic node hooked up for messaging. Further notes below.**
 
-The setup used to develop this app comprises a Seeed studios XIAO ESP32 + SX1262 Meshtastic kit and a Raspberry Pi Zero 2W. This makes for an easy build because there is a script for the Pi that sets up most of Node-RED. This documentation is based on that setup.
+The hardware used to develop this app comprises a Seeed studios XIAO ESP32 + SX1262 Meshtastic kit and a Raspberry Pi Zero 2W. It’s an easy build because there is a script for the Pi that sets up most of Node-RED. This documentation is based on that hardware. Note that the board in the picture below is used for development and Meshtastic testing; it includes GPS, sensors and a display – it’s much more complex than just what’s needed for this project, so don’t let it put you off!
 
 <div align="center">
 <img src="images/devboard-sm.jpg" alt="Devboard" width="640">
@@ -134,12 +134,12 @@ Unless arranged differently by the setup, the Pi and Seeed boards still need the
 
 #### Global Config Error
 If you receive the message: *The workspace contains some unknown node types: global-config*, try the following:
-1. Click Deploy.
-2. Click Search for unknown nodes.
-3. Select the global-config node – notice that it is displayed with a flashing border in a list on the right side of the screen.
+1. Click *Deploy*.
+2. Click *Search for unknown nodes*.
+3. Select the *global-config* node – notice that it is displayed with a flashing border in a list on the right side of the screen.
 4. Double-click the node with the flashing border.
-5. Select Delete.
-6. Select Deploy. The deploy should now work and it’s time to start configuring your flows.
+5. Select *Delete*.
+6. Select *Deploy*. The deploy should now work and it’s time to start configuring your flows.
 
 ### Async ports
 How to enable the serial module (async port) and set TEXTMSG mode on set a meshtastic node 
@@ -201,7 +201,7 @@ Use this other Meshtastic node for testing - remembering to enable the *Async ou
 https://meshtastic.org/docs/configuration/radio/channels/
 Once all testing is done, there are two options:
 1. Leave the channel order as it is on the messaging node and all the good things will happen in this private channel.
-2. Use the Radio configuration menu to change the channel order back to the original order, which makes the Longfast (public) channel the default – which is the one to/from which all REDTastic messaging takes place.
+2. Use the Radio configuration menu to change the channel order back to the original order, which makes the LongFast (public) channel the default – which is the one to/from which all REDTastic messaging takes place.
 
 In other words, if channel order is swapped back to the default, everything sent by REDTastic goes to the public (LongFast) messaging channel. 
 
