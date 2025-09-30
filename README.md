@@ -75,7 +75,7 @@ The setup used to develop this app comprises a Seeed studios XIAO ESP32 + SX1262
 ## How to Set up
 The main setup steps when using a Raspberry Pi are:
 
-1. Put an OS on an SD card for the Raspberry pi (minimal OS install is required – no graphical interface).
+1. Put an OS on an SD card (8GB min, 16GB recommended) for the Raspberry pi (minimal OS install is required – no graphical interface).
 2. Enable the async (UART) port on the Pi. Further notes below.
 3. Run the official automated script to install Node-RED. When asked whether to install any Pi-specific nodes or functionality, reply Yes. Further notes below.
 4. Install the needed Node-RED plugins – there’s a list below.
