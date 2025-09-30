@@ -75,7 +75,7 @@ The setup used to develop this app comprises a Seeed studios XIAO ESP32 + SX1262
 ## How to Set up
 The main setup steps when using a Raspberry Pi are:
 
-1. Put an OS an SD card for the Raspberry pi (minimal OS install is required – no graphical interface).
+1. Put an OS on an SD card for the Raspberry pi (minimal OS install is required – no graphical interface).
 2. Enable the async (UART) port on the Pi. Further notes below.
 3. Run the official automated script to install Node-RED. When asked whether to install any Pi-specific nodes or functionality, reply Yes. Further notes below.
 4. Install the needed Node-RED plugins – there’s a list below.
@@ -83,26 +83,26 @@ The main setup steps when using a Raspberry Pi are:
 6. With the Pi and the Node shut down and powered off, connect a wire between the 0V/GND pins on the Pi and the Meshtastic node.
 7. With everything still powered off, connect the Pi Rx and Tx async pins to the Node’s async pins – remembering that the wiring needs to be crossed over so, Rx on one device goes to Tx on the other and vice versa.
 8. Download and import the flow code into Node-RED, which sets up all the tabs etc.
-9. Check/setup the Async in and Async out nodes – further notes below and see the notes in the setup function block on the first Node-RED tab. Leave the Async node out disabled until all other config is done and tested.
+9. Check/setup the *Async in* and *Async out* nodes – further notes below and see the notes in the setup function block on the first Node-RED tab. Leave the *Async out* node disabled until all other configuration is done and tested.
 10. Run through all the notes and settings in the setup function block at the top of the first tab in Node-RED*.
 11. Run through the tabs in sequence, checking for a comments node, and checking all function nodes for additional setup help and info*.
 12. Customise any other messages (either in the setup function or in separate function blocks) as needed.
 13. Test all functions using the debug triggers.
-14. Enable the Async out node and test again in a private channel. Further notes below.
+14. Enable the *Async out* node and test again in a private channel. Further notes below.
 15. Test and test again.
 16. 'Go live'.
 
 Most of the hard work is done inside Node-RED. As much of the setup as possible is done in a function node on the first tab and there are comprehensive notes in many of the function nodes – check them out to complete any setup before going live. Some tabs also have additional comments.
 
 *The default setup uses a trigger of ‘l3k_’ for received messages so, for example, a Zen quote is sent out if the message /l3kz is received. You can change this by altering the *basePattern* global variable in the global variable function and adjusting the help test message on the Help tab.
-If basePattern is not changed, or it’s left unset, the parser will use /l3k by default.
+If *basePattern* is not changed, or it’s left unset, the parser will use /l3k by default.
 
 Some of the flows have rate limiting nodes – please respect the Mesh and leave these set to reasonable values to avoid letting people flood the channel with, for example, Zen quotes or ping requests. 
 
-If you are testing your setup in a private channel, or with the async Tx node disabled, there is an inject node on the first tab to reset the rate limiters. Try this if you suddenly find that outbound messages are not being generated as expected.
+If you are testing your setup in a private channel, or with the *Async out* node disabled, there is an inject node on the first tab to reset the rate limiters. Try this if you suddenly find that outbound messages are not being generated as expected.
 
 By default: 
-+ REDTastic sends an ident message every 24 hours.
++ REDTastic sends an ident message every 24 hours - this is set to 0700.
 + Severe weather alerts are checked for and issued every hour.
 
 **NB: There is currently (Sep 2025) a bug in the Meshtastic TEXTMSG code which means that a small string of garbage data from an uncleared buffer might be sent when the node is powered on (and sometimes off) – this is a Meshtastic thing so please do not report it as a REDTastic bug.**
@@ -146,7 +146,7 @@ How to enable the serial module (async port) and set TEXTMSG mode on set a mesht
 
 https://meshtastic.org/docs/configuration/module/serial/
 
-NB: Do NOT enable “Override Console Serial Port”.
+NB: Do NOT enable *Override Console Serial Port*.
 
 How to enable the async port on a Raspberry Pi (needs config files changed)
 
@@ -164,7 +164,7 @@ dtoverlay=disable-bt
 ```
 As might be deduced, enabling uart async requires Bluetooth to be disabled.
 
-Note: Raspberry Pi configurations normally use UART0 for their async port, which usually (but not always) translates to ttyAMA0 in Linux-speak – hence the default setup of the Node-RED async out node:
+Note: Raspberry Pi configurations normally use UART0 for their async port, which usually (but not always) translates to ttyAMA0 in Linux-speak – hence the default setup of the Node-RED *Async in* and out nodes:
 
 <div align="center">
 <img src="images/async_node_setup.png" alt="Async node setup" width="400">
@@ -191,7 +191,7 @@ To do this is a three-step process in the Meshtastic phone app:
 1. Set up a new channel as your private channel – by default, this is known as a ‘secondary’ channel, however we will move its order – see link below for how to set up a secondary (private) channel.
 2. In the Radio Configuration for the node being used, drag the new private channel to be the first one in the list, then save and wait for the node to reboot. In other words the secondary (private) channel now becomes the primary channel on this node.
 3. Configure another Meshtastic node to work with this private channel. Provided the config is done correctly, this can be left as a secondary channel – it does not have to be moved to be the first one in the channel list, but you must select it as the one for messaging.
-Use this other Meshtastic node for testing - remembering to enable the Async out node on the first tab in Node-RED so that messages go out.
+Use this other Meshtastic node for testing - remembering to enable the *Async out* node on the first tab in Node-RED so that messages go out.
 
 <div align="center">
 <img src="images/Message-channels-annot.png" alt="Message channels" width="200">
