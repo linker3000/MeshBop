@@ -102,7 +102,7 @@ Some of the flows have rate limiting nodes – please respect the Mesh and leave
 If you are testing your setup in a private channel, or with the *Async out* node disabled, there is an inject node on the first tab to reset the rate limiters. Try this if you suddenly find that outbound messages are not being generated as expected.
 
 By default: 
-+ REDTastic sends an ident message every 24 hours - this is set to 0700.
++ REDTastic sends an ident message every 24 hours – this will be fixed at 0700 in later releases.
 + Severe weather alerts are checked for and issued every hour.
 
 **NB: There is currently (Sep 2025) a bug in the Meshtastic TEXTMSG code which means that a small string of garbage data from an uncleared buffer might be sent when the node is powered on (and sometimes off) – this is a Meshtastic thing so please do not report it as a REDTastic bug.**
