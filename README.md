@@ -72,7 +72,7 @@ The hardware used to develop this app comprises a Seeed studios XIAO ESP32 + SX1
 <img src="images/devboard-sm.jpg" alt="Devboard" width="640">
 </div>
 
-## How to Set up
+## How to set up the hardware and Node-RED
 The main setup steps when using a Raspberry Pi are:
 
 1. Put an OS on an SD card (8GB min, 16GB recommended) for the Raspberry pi (minimal OS install is requi – no graphical interface).
@@ -102,7 +102,7 @@ Some of the flows have rate limiting nodes – please respect the Mesh and leave
 If you are testing your setup in a private channel, or with the *Async out* node disabled, there is an inject node on the first tab to reset the rate limiters. Try this if you suddenly find that outbound messages are not being generated as expected.
 
 By default: 
-+ MeshBop sends an ident message every 24 hours – this will be fixed at 0700 in later releases.
++ MeshBop sends an ident message every 24 hours at 0700.
 + Severe weather alerts are checked for and issued every hour.
 
 **NB: There is currently (Sep 2025) a bug in the Meshtastic TEXTMSG code which means that a small string of garbage data from an unclea buffer might be sent when the node is powe on (and sometimes off) – this is a Meshtastic thing so please do not report it as a MeshBop bug.**
@@ -118,11 +118,11 @@ The wiring between the computer board and the Meshtastic NODE will depend on wha
 The pins on the XIAO board marked RX and TX weren’t used in this case because they were hooked up to a GPS module. This wiring meant that the serial setup in the Meshtastic was as follows:
 
 <div align="center">
-<img src="images/serial-config-meshtastic.png" alt="Serial config" width="400">
+<img src="images/serial-config-meshtastic.png" alt="Serial config" width="300">
  <P></P>
 </div>
 
-Unless arranged differently by the setup, the Pi and Seeed boards still need their own, separate USB power supplies.
+Unless arranged differently by the hardware setup, the Pi and Seeed boards still need their own, separate USB power supplies.
 
 ### Importing the MeshBop package into Node-RED
 1. Download the MeshBop *.json package from this repo.
@@ -208,3 +208,22 @@ In other words, if channel order is swapped back to the default, everything sent
 ***Make sure that’s what you want to do!***
 
 MeshBop rate limits its sending so there is reduced risk of flooding the public channel, but you may not want to accidentally send any personal information to the wrong channel.
+
+## Upgrading MeshBop
+Upgrading MeshBop is done by repeating the initial installation steps. Unfortunately, at the moment at least, there is no way to backup the current settings before upgrading, so if any functions have been edited, it is best to copy their entire code into a text editor and save this. When an upgrade has been done, the saved info can be used to re-setup the new functions. Before doing a complete copy/paste though, check out the new function code because it may have been upgraded and work differently. 
+
+The upgrade process is as follows:
+1. Take a copy of any modified functions, as described above.
+2. If any flows have been modified by, for example, adding nodes, consider taking a screenshot of the wiring so that the same changes can be applied to the upgrade.
+3. Before importing an upgrade, take MeshBop offline – for example, disable the async out node or move the primary message channel its using to be the secondary.
+4. Export and download a copy of the current setup. This is done via the *Export* option in the burger menu (top right). Remember to select that you want to export *All flows*.
+5. Delete all but one of the current flow tabs (the last tab in Node-RED can’t be deleted): Double click each tab in turn and select *Delete*.
+6. Select the final tab, press CTRL-A to select all nodes and press the keyboard’s *del* key..
+7. Double click on the tab name and rename the tab to ‘Delete me’.
+8. Do a *Full* deploy from the *Deploy* menu.
+9. Download the new *.json file from the GitHub repository and import it as described earlier. Confirm that changes should be merged, if asked.
+10. Delete the tab named ‘Delete me’.
+11. Check through the new code, reading all the comments and reviewing all the functions.
+12. Use the saved notes to re-make any function or wiring changes done previously.
+13. Test as described above for the original import
+14. Test everything before going live.
