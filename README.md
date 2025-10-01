@@ -1,4 +1,4 @@
-# REDTastic
+# MeshBop
 A simple messaging service for Meshtastic, written as a set of Node-RED flows.
 
 *The accuracy and results of using this app depend on your setup work and third party code.
@@ -75,13 +75,13 @@ The hardware used to develop this app comprises a Seeed studios XIAO ESP32 + SX1
 ## How to Set up
 The main setup steps when using a Raspberry Pi are:
 
-1. Put an OS on an SD card (8GB min, 16GB recommended) for the Raspberry pi (minimal OS install is required – no graphical interface).
+1. Put an OS on an SD card (8GB min, 16GB recommended) for the Raspberry pi (minimal OS install is requi – no graphical interface).
 2. Enable the async (UART) port on the Pi. Further notes below.
 3. Run the official automated script to install Node-RED. When asked whether to install any Pi-specific nodes or functionality, reply Yes. Further notes below.
 4. Install the needed Node-RED plugins – there’s a list below.
 5. Enable TEXTMSG mode on your Meshtastic Node. (Note: You need to have physical access to the serial / async port pins on your node.) and make a note of its comms parameters, especially the speed, which is probably 19200 bits/second.
-6. With the Pi and the Node shut down and powered off, connect a wire between the 0V/GND pins on the Pi and the Meshtastic node.
-7. With everything still powered off, connect the Pi Rx and Tx async pins to the Node’s async pins – remembering that the wiring needs to be crossed over so, Rx on one device goes to Tx on the other and vice versa.
+6. With the Pi and the Node shut down and powe off, connect a wire between the 0V/GND pins on the Pi and the Meshtastic node.
+7. With everything still powe off, connect the Pi Rx and Tx async pins to the Node’s async pins – remembering that the wiring needs to be crossed over so, Rx on one device goes to Tx on the other and vice versa.
 8. Download and import the flow code into Node-RED, which sets up all the tabs etc.
 9. Check/setup the *Async in* and *Async out* nodes – further notes below and see the notes in the setup function block on the first Node-RED tab. Leave the *Async out* node disabled until all other configuration is done and tested.
 10. Run through all the notes and settings in the setup function block at the top of the first tab in Node-RED*.
@@ -102,10 +102,10 @@ Some of the flows have rate limiting nodes – please respect the Mesh and leave
 If you are testing your setup in a private channel, or with the *Async out* node disabled, there is an inject node on the first tab to reset the rate limiters. Try this if you suddenly find that outbound messages are not being generated as expected.
 
 By default: 
-+ REDTastic sends an ident message every 24 hours – this will be fixed at 0700 in later releases.
++ MeshBop sends an ident message every 24 hours – this will be fixed at 0700 in later releases.
 + Severe weather alerts are checked for and issued every hour.
 
-**NB: There is currently (Sep 2025) a bug in the Meshtastic TEXTMSG code which means that a small string of garbage data from an uncleared buffer might be sent when the node is powered on (and sometimes off) – this is a Meshtastic thing so please do not report it as a REDTastic bug.**
+**NB: There is currently (Sep 2025) a bug in the Meshtastic TEXTMSG code which means that a small string of garbage data from an unclea buffer might be sent when the node is powe on (and sometimes off) – this is a Meshtastic thing so please do not report it as a MeshBop bug.**
 
 ## Other Setup Notes
 ### Device wiring
@@ -124,8 +124,8 @@ The pins on the XIAO board marked RX and TX weren’t used in this case because 
 
 Unless arranged differently by the setup, the Pi and Seeed boards still need their own, separate USB power supplies.
 
-### Importing the REDTastic package into Node-RED
-1. Download the REDTastic *.json package from this repo.
+### Importing the MeshBop package into Node-RED
+1. Download the MeshBop *.json package from this repo.
 2. Open the Burger Menu in Node-RED (top right) and select Import.
 3. Choose *select a file to import*.
 4. Select the downloaded .json file.
@@ -174,7 +174,7 @@ Note: Raspberry Pi configurations normally use UART0 for their async port, which
 https://nodered.org/docs/getting-started/raspberrypi
 
 ### Node-RED plugins
-Use the *Manage palette* menu to ensure the following plugins are installed before you import the REDTastic code. Some of these nodes will be installed by default. If you are NOT using a Raspberry Pi, you should identify whether any different plugins are needed to access the serial port on your device. Not all of these plugins may be being used in the current app.
+Use the *Manage palette* menu to ensure the following plugins are installed before you import the MeshBop code. Some of these nodes will be installed by default. If you are NOT using a Raspberry Pi, you should identify whether any different plugins are needed to access the serial port on your device. Not all of these plugins may be being used in the current app.
 NB: Make sure you install the Flowfuse dashboard (dashboard 2):
 
     • flowfuse/node-red-dashboard
@@ -201,10 +201,10 @@ Use this other Meshtastic node for testing - remembering to enable the *Async ou
 https://meshtastic.org/docs/configuration/radio/channels/
 Once all testing is done, there are two options:
 1. Leave the channel order as it is on the messaging node and all the good things will happen in this private channel.
-2. Use the Radio configuration menu to change the channel order back to the original order, which makes the LongFast (public) channel the default – which is the one to/from which all REDTastic messaging takes place.
+2. Use the Radio configuration menu to change the channel order back to the original order, which makes the LongFast (public) channel the default – which is the one to/from which all MeshBop messaging takes place.
 
-In other words, if channel order is swapped back to the default, everything sent by REDTastic goes to the public (LongFast) messaging channel. 
+In other words, if channel order is swapped back to the default, everything sent by MeshBop goes to the public (LongFast) messaging channel. 
 
 ***Make sure that’s what you want to do!***
 
-REDTastic rate limits its sending so there is reduced risk of flooding the public channel, but you may not want to accidentally send any personal information to the wrong channel.
+MeshBop rate limits its sending so there is reduced risk of flooding the public channel, but you may not want to accidentally send any personal information to the wrong channel.
