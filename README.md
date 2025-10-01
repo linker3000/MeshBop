@@ -21,6 +21,20 @@ You are free to:
 Full License Text: https://creativecommons.org/licenses/by-nc-sa/4.0/
 ```
 ---
+
+**Beta 1-4 fix - changeme**
+
+To make the checks for 'ping' and 'test' messages case insensitive, change these two lines in the function *Parse Rx message* on the first tab:
+
+```
+ { regex: new RegExp("(test|testing)$", "i"), desc: "test pattern" },        // Output 7
+ { regex: new RegExp("ping$", "i"), desc: "ping pattern" },                  // Output 8
+```
+
+Adding ```, "i"``` makes the checks ignore case. This fix will be implemented in the Beta 0.05 download onwards.
+
+---
+
 **Beta 0 fix - changeme**
 
 If you've already downloaded and installed the beta code, here's a fix to stop one ident message being sent for every news article.
@@ -31,7 +45,6 @@ Once done, hit Deploy. This fix is not needed for beta code 0.01 (filename *-bet
 <div align="center">
 <img src="images/ident-beta001.png" alt="Beta 0 fix" width="800">
 </div>
-
 ---
 
 This package installs a set of muti-tab flows that comprise a trigger/response messaging service for Meshtastic using the Meshtastic TEXTMSG method of message sending and receiving. There is also a dashboard page for sending and receiving messages.
