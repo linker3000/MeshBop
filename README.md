@@ -31,7 +31,7 @@ To make the checks for 'ping' and 'test' messages case insensitive, change these
  { regex: new RegExp("ping$", "i"), desc: "ping pattern" },                  // Output 8
 ```
 
-Adding ```, "i"``` makes the checks ignore case. This fix will be implemented in the Beta 0.05 download onwards.
+Adding ```, "i"``` makes the checks ignore case. In Beta 0.05 onwards all checks will ignore case.
 
 ---
 
