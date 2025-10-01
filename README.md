@@ -94,7 +94,7 @@ The main setup steps when using a Raspberry Pi are:
 4. Install the needed Node-RED plugins – there’s a list below.
 5. Enable TEXTMSG mode on your Meshtastic Node. (Note: You need to have physical access to the serial / async port pins on your node.) and make a note of its comms parameters, especially the speed, which is probably 19200 bits/second.
 6. With the Pi and the Node shut down and powe off, connect a wire between the 0V/GND pins on the Pi and the Meshtastic node.
-7. With everything still powe off, connect the Pi Rx and Tx async pins to the Node’s async pins – remembering that the wiring needs to be crossed over so, Rx on one device goes to Tx on the other and vice versa.
+7. With everything still powered off, connect the Pi Rx and Tx async pins to the Node’s async pins – remembering that the wiring needs to be crossed over so, Rx on one device goes to Tx on the other and vice versa.
 8. Download and import the flow code into Node-RED, which sets up all the tabs etc.
 9. Check/setup the *Async in* and *Async out* nodes – further notes below and see the notes in the setup function block on the first Node-RED tab. Leave the *Async out* node disabled until all other configuration is done and tested.
 10. Run through all the notes and settings in the setup function block at the top of the first tab in Node-RED*.
