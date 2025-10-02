@@ -31,7 +31,7 @@ To make the checks for 'ping' and 'test' messages case insensitive, change these
  { regex: new RegExp("ping$", "i"), desc: "ping pattern" },                  // Output 8
 ```
 
-Adding ```, "i"``` makes the checks ignore case. In Beta 0.05 onwards all checks will ignore case.
+Adding ```, "i"``` makes the checks ignore case; feel free to do this for th eother checks too. In Beta 0.05 onwards all checks will ignore case.
 
 ---
 
@@ -47,7 +47,7 @@ Once done, hit Deploy. This fix is not needed for beta code 0.01 (filename *-bet
 </div>
 ---
 
-This package installs a set of muti-tab flows that comprise a trigger/response messaging service for Meshtastic using the Meshtastic TEXTMSG method of message sending and receiving. There is also a dashboard page for sending and receiving messages.
+This package installs a set of muti-tab flows that comprise a trigger / response messaging service for Meshtastic using the Meshtastic TEXTMSG method of message sending and receiving. There is also a Web-based dashboard page for sending and receiving messages.
 
 The setup PDF contains mostly the same info as below, so it is not an essential download. 
 
@@ -74,12 +74,13 @@ The default setup includes:
 + Severe weather warnings.
 + A help page.
 + An app info page.
++ Send an email to the node admin using @ID (eg: @l3k) anywhere in a message. (Beta 0.05 onwards).
 
 Setting up a messaging system requires a Meshtastic node device to which there’s access to the serial (async) Tx and Rx pins, and a compute device with a serial port  (UART) that can run Linux and Node-RED.
 
 **Important: Meshtastic firmware (currently) sends and receives TEXTMSG messages to / from the first (primary) Meshtastic channel, so if you want to use this application in a private group, that group MUST be set as the FIRST channel on the Meshtastic node hooked up for messaging. Further notes below.**
 
-The hardware used to develop this app comprises a Seeed studios XIAO ESP32 + SX1262 Meshtastic kit and a Raspberry Pi Zero 2W. It’s an easy build because there is a script for the Pi that sets up most of Node-RED. This documentation is based on that hardware. Note that the board in the picture below is used for development and Meshtastic testing; it includes GPS, sensors and a display – it’s much more complex than just what’s needed for this project, so don’t let it put you off!
+The hardware used to develop this app comprises a Seeed studios XIAO ESP32 + SX1262 Meshtastic kit and a Raspberry Pi Zero 2W. It’s an easy build because there is a script for the Pi that sets up most of Node-RED. This documentation is based on that hardware. Note that the board in the picture below is used for other development and Meshtastic testing; it includes GPS, sensors and a display – it’s much more complex than just what’s needed for this project, so don’t let it put you off!
 
 <div align="center">
 <img src="images/devboard-sm.jpg" alt="Devboard" width="640">
@@ -88,15 +89,15 @@ The hardware used to develop this app comprises a Seeed studios XIAO ESP32 + SX1
 ## How to set up the hardware and Node-RED
 The main setup steps when using a Raspberry Pi are:
 
-1. Put an OS on an SD card (8GB min, 16GB recommended) for the Raspberry pi (minimal OS install is requi – no graphical interface).
+1. Put an OS on an SD card (8GB min, 16GB recommended) for the Raspberry pi (minimal OS install is required – no graphical interface).
 2. Enable the async (UART) port on the Pi. Further notes below.
 3. Run the official automated script to install Node-RED. When asked whether to install any Pi-specific nodes or functionality, reply Yes. Further notes below.
 4. Install the needed Node-RED plugins – there’s a list below.
-5. Enable TEXTMSG mode on your Meshtastic Node. (Note: You need to have physical access to the serial / async port pins on your node.) and make a note of its comms parameters, especially the speed, which is probably 19200 bits/second.
-6. With the Pi and the Node shut down and powe off, connect a wire between the 0V/GND pins on the Pi and the Meshtastic node.
-7. With everything still powered off, connect the Pi Rx and Tx async pins to the Node’s async pins – remembering that the wiring needs to be crossed over so, Rx on one device goes to Tx on the other and vice versa.
+5. Enable TEXTMSG mode on your Meshtastic Node and make a note of its comms parameters; especially the speed, which is probably 19200 bits/second. Note that physical access to the serial / async port pins on the node device is needed to hook it to the Pi later.
+6. With the two devices shut down and powered off, connect a wire between the 0V/GND pins on the Pi and the Meshtastic node.
+7. With everything still powered off, connect the Pi Rx and Tx async pins to the Node’s async pins – note that the wiring needs to be crossed over so, Rx on one device goes to Tx on the other and vice versa.
 8. Download and import the flow code into Node-RED, which sets up all the tabs etc.
-9. Check/setup the *Async in* and *Async out* nodes – further notes below and see the notes in the setup function block on the first Node-RED tab. Leave the *Async out* node disabled until all other configuration is done and tested.
+9. Check/setup the *Async in* and *Async out* nodes – further notes below and there's more in the setup function block on the first Node-RED tab. Leave the *Async out* node disabled until all other configuration is done and tested.
 10. Run through all the notes and settings in the setup function block at the top of the first tab in Node-RED*.
 11. Run through the tabs in sequence, checking for a comments node, and checking all function nodes for additional setup help and info*.
 12. Customise any other messages (either in the setup function or in separate function blocks) as needed.
@@ -105,37 +106,37 @@ The main setup steps when using a Raspberry Pi are:
 15. Test and test again.
 16. 'Go live'.
 
-Most of the hard work is done inside Node-RED. As much of the setup as possible is done in a function node on the first tab and there are comprehensive notes in many of the function nodes – check them out to complete any setup before going live. Some tabs also have additional comments.
+Most of the hard work is done inside Node-RED. As much of the setup as possible is done in a function node on the first tab.
 
-*The default setup uses a trigger of ‘l3k_’ for received messages so, for example, a Zen quote is sent out if the message /l3kz is received. You can change this by altering the *basePattern* global variable in the global variable function and adjusting the help test message on the Help tab.
+*The default setup uses a trigger of ‘l3k_’ for received messages so, for example, a Zen quote is sent out if the message /l3kz is received (case insensitive from beta version 0.05 onwards). You can change this by altering the *basePattern* global variable in the global variable function and adjusting the help test message on the Help tab.
 If *basePattern* is not changed, or it’s left unset, the parser will use /l3k by default.
 
 Some of the flows have rate limiting nodes – please respect the Mesh and leave these set to reasonable values to avoid letting people flood the channel with, for example, Zen quotes or ping requests. 
 
-If you are testing your setup in a private channel, or with the *Async out* node disabled, there is an inject node on the first tab to reset the rate limiters. Try this if you suddenly find that outbound messages are not being generated as expected.
+If you are testing your setup in a private channel, or with the *Async out* node disabled, there is an inject node on the first tab to reset the rate limiters. Try this if you suddenly find that outbound messages are not being passed for sending.
 
 By default: 
 + MeshBop sends an ident message every 24 hours at 0700.
-+ Severe weather alerts are checked for and issued every hour.
++ Severe weather alerts are checked for and, if found, issued every hour.
 
-**NB: There is currently (Sep 2025) a bug in the Meshtastic TEXTMSG code which means that a small string of garbage data from an unclea buffer might be sent when the node is powe on (and sometimes off) – this is a Meshtastic thing so please do not report it as a MeshBop bug.**
+**NB: There is currently (Sep 2025) a bug in the node firmware which causes a small string of garbage data from an uncleared buffer to be sent when TEXTMSG is enabled and the node is powered on (and sometimes off) – this is a Meshtastic thing so please do not report it as a MeshBop bug.**
 
 ## Other Setup Notes
 ### Device wiring
-The wiring between the computer board and the Meshtastic NODE will depend on what devices are used. The development setup comprised a Raspberry Pi Zero 2W connected to a XIAO ESP32S3 & Wio-SX1262 Kit for Meshtastic & LoRa as follows:
+The wiring between the computer board and the Meshtastic NODE will depend on what devices are used. On the development setup it's as follows:
 
 <div align="center">
 <img src="images/wiring.png" alt="Board wiring" width="800">
 </div>
 
-The pins on the XIAO board marked RX and TX weren’t used in this case because they were hooked up to a GPS module. This wiring meant that the serial setup in the Meshtastic was as follows:
+The pins on the XIAO board marked RX and TX weren’t used in this case because they were already hooked up to a GPS module. This wiring meant that the serial setup in the Meshtastic node firmware (via the phone app) was as follows:
 
 <div align="center">
 <img src="images/serial-config-meshtastic.png" alt="Serial config" width="300">
  <P></P>
 </div>
 
-Unless arranged differently by the hardware setup, the Pi and Seeed boards still need their own, separate USB power supplies.
+Unless arranged differently, the Pi and Seeed boards still need their own, separate USB power supplies.
 
 ### Importing the MeshBop package into Node-RED
 1. Download the MeshBop *.json package from this repo.
@@ -152,7 +153,7 @@ If you receive the message: *The workspace contains some unknown node types: glo
 3. Select the *global-config* node – notice that it is displayed with a flashing border in a list on the right side of the screen.
 4. Double-click the node with the flashing border.
 5. Select *Delete*.
-6. Select *Deploy*. The deploy should now work and it’s time to start configuring your flows.
+6. Select *Deploy*. The deploy should now work and it’s time to start configuring the flows.
 
 ### Async ports
 How to enable the serial module (async port) and set TEXTMSG mode on set a meshtastic node 
@@ -187,8 +188,8 @@ Note: Raspberry Pi configurations normally use UART0 for their async port, which
 https://nodered.org/docs/getting-started/raspberrypi
 
 ### Node-RED plugins
-Use the *Manage palette* menu to ensure the following plugins are installed before you import the MeshBop code. Some of these nodes will be installed by default. If you are NOT using a Raspberry Pi, you should identify whether any different plugins are needed to access the serial port on your device. Not all of these plugins may be being used in the current app.
-NB: Make sure you install the Flowfuse dashboard (dashboard 2):
+Use the *Manage palette* menu to ensure the following plugins are installed before you import the MeshBop code. Some of these nodes may already be installed by default. If you are NOT using a Raspberry Pi, you should identify whether any different plugins are needed to access the serial port on your device. Not all of these plugins may be being used in the current app.
+NB: Make sure you install the **Flowfuse** dashboard (dashboard 2):
 
     • flowfuse/node-red-dashboard
     • node-red-contrib-astrodata
@@ -202,13 +203,15 @@ NB: Make sure you install the Flowfuse dashboard (dashboard 2):
 
 To do this is a three-step process in the Meshtastic phone app:
 1. Set up a new channel as your private channel – by default, this is known as a ‘secondary’ channel, however we will move its order – see link below for how to set up a secondary (private) channel.
-2. In the Radio Configuration for the node being used, drag the new private channel to be the first one in the list, then save and wait for the node to reboot. In other words the secondary (private) channel now becomes the primary channel on this node.
+2. In the Radio Configuration for the node being used, drag the new private channel to be the **first** one in the list, then save and wait for the node to reboot. In other words the secondary (private) channel now becomes the primary channel on this node.
 3. Configure another Meshtastic node to work with this private channel. Provided the config is done correctly, this can be left as a secondary channel – it does not have to be moved to be the first one in the channel list, but you must select it as the one for messaging.
 Use this other Meshtastic node for testing - remembering to enable the *Async out* node on the first tab in Node-RED so that messages go out.
 
 <div align="center">
 <img src="images/Message-channels-annot.png" alt="Message channels" width="200">
 </div>
+
+Note that in quite a few versions of the phone apps, reordering the channels causes old messages from one channel to appear in the other on the main message viewing pages. This is a Meshtastic bug and nothing to do with MeshBop. 
 
 ### How to set up a Secondary (private) Channel.
 https://meshtastic.org/docs/configuration/radio/channels/
