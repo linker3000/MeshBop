@@ -26,14 +26,13 @@ Full License Text: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 To make the checks for 'ping' and 'test' messages case insensitive, change these two lines in the function *Parse Rx message* on the first tab:
 
+**Edit: Regexes changed again on 06-Oct-2025 to only match the words if they are at the start of the message.**
 ```
- { regex: new RegExp("(test|testing)$", "i"), desc: "test pattern" },        // Output 7
- { regex: new RegExp("ping$", "i"), desc: "ping pattern" },                  // Output 8
+  { regex: new RegExp("^(\\/)?(test|testing)$", "i"), helpText: `test = Test message (also /test).` },
+  { regex: new RegExp("^(\\/)?ping$", "i"), helpText: `ping = Ping test (also /ping).` },
 ```
 
-Adding ```, "i"``` makes the checks ignore case; feel free to do this for th eother checks too. In Beta 0.05 onwards all checks will ignore case.
-
----
+Adding ```, "i"``` makes the checks ignore case; feel free to do this for the other checks too. In Beta 0.05 onwards all checks will ignore case.
 
 **Beta 0 fix - changeme**
 
