@@ -1,6 +1,6 @@
 # MeshBop
 
-A simple auytomated messaging service and Web-based terminal for Meshtastic, written as a set of Node-RED flows.
+A simple automated messaging service and Web-based terminal for Meshtastic, written as a set of Node-RED flows.
 
 A 'weekend project' that got a bit out of hand!
 
