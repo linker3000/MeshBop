@@ -425,7 +425,7 @@ These instructions assume MeshBop is the only set of flows in your Node-RED inst
 
 #### Document Current Settings
 
-1. Note all customizations in function nodes - copy the contents of any cutomised functions into a text editor and save them for tuture reference
+1. Note all customizations in function nodes - copy the contents of any cutomised functions into a text editor and save them for future reference
 2. Screenshot any modified flow wiring too
 3. Export the current flows:
    - Click **☰** → **Export** → **All flows**
@@ -699,7 +699,7 @@ sudo systemctl list-units | grep node
 
 ### Localisation
 
-MeshBop was written in the UK and uses UK/EU services for news, weather and other information. These services may not be available in your conuntry, or there may be better, local ones to use. If you replace any flows with regional versions, please export them and share here for others to enjoy.
+MeshBop was written in the UK and uses UK/EU services for news, weather and other information. These services may not be available in your country, or there may be better, local ones to use. If you replace any flows with regional versions, please export them and share here for others to enjoy.
 
 ### Performance Tips
 
