@@ -340,7 +340,6 @@ If using email notifications:
    - Port
    - Username
    - Password
-   - From address
 
 **Tip**: Use an app-specific password for Gmail accounts.
 
