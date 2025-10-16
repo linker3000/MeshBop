@@ -424,7 +424,7 @@ These instructions assume MeshBop is the only set of flows in your Node-RED inst
 
 #### Document Current Settings
 
-1. Note all customizations in function nodes - copy the contents of any cutomised functions into a text editor and save them for future reference
+1. Note all customizations in function nodes - copy the contents of any customised functions into a text editor and save them for future reference
 2. Screenshot any modified flow wiring too
 3. Export the current flows:
    - Click **☰** → **Export** → **All flows**
