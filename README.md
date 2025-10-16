@@ -1,6 +1,11 @@
 # MeshBop
 
-A simple automated messaging service and Web-based terminal for Meshtastic, written as a set of Node-RED flows.
+
+A simple automated messaging service and Web-based terminal for Meshtastic, written as a set of Node-RED flows. 
+
+Meshtastic is an open-source, off-grid communication platform that enables long-range messaging between devices 
+using low-cost LoRa radio hardware, creating mesh networks that don't require phones, WiFi, or cellular service. 
+Learn more at https://meshtastic.org
 
 A 'weekend project' that got a bit out of hand!
 
