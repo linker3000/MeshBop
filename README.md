@@ -334,7 +334,7 @@ Go through each tab in sequence:
 
 If using email notifications:
 
-1. Find the email node on the **Email** tab
+1. Find the email node on the **Rx / Tx** tab
 2. Configure SMTP settings:
    - Server
    - Port
@@ -625,7 +625,7 @@ All support and advice is given on a 'best effort' basis - there's no SLA here!
 
 ### Feedback Welcome
 
-Contact: linker3000@gmail.com (replace -dot-thingy with .com)
+Contact: linker3000@gmail-dot-thingy (replace -dot-thingy with .com)
 
 ---
 
