@@ -34,7 +34,7 @@ A 'weekend project' that got a bit out of hand!
 MeshBop is an easily extensible trigger/response messaging service for Meshtastic. It includes a web-based dashboard for sending and receiving messages, automated weather alerts, and customizable message triggers.
 
 <div align="center">
-<img src="images/dashboard.png" alt="Dashboard page" width="600">
+<img src="images/dashboard-2.png" alt="Dashboard page" width="600">
 </div>
 
 ---
