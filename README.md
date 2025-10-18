@@ -487,10 +487,6 @@ cp ~/Downloads/meshbop-nnnnn.json /home/pi/.node-red/flows.json
 sudo chown pi:pi /home/pi/.node-red/flows*.json
 sudo chown pi:pi /home/pi/.node-red/settings.js
 ```
-```bash
-sudo chown nodered:nodered /home/nodered/.node-red/flows*.json
-```
-
 #### 8. Restart Node-RED
 
 ```bash
