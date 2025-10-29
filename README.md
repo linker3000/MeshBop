@@ -45,19 +45,20 @@ MeshBop is an easily extensible trigger/response messaging service for Meshtasti
 
 Message triggers are activated using a short, definable prefix (example: `/abcd?` for help).
 
-- **?** Help page
-- **i** App info page
-- **n** BBC RSS news feed
-- **s** Sea state (v0.50 beta onwards)
-- **t** Local time, sunrise and sunset
-- **w** Local weather
-- **z** Inspirational (Zen) message
-
+- **?**  Help page
+- **i**  App info page
+- **n**  RSS news feeds (various from V0.51 onwards)
+- **s**  Sea state (v0.50 beta onwards)
+- **t**  Local time, sunrise and sunset
+- **w**  Local weather
+- **ws** Check for severe weather warnings (v0.51 onwards)
+- **z**  Inspirational (Zen) message
+   
 ### Additional Features
 
 - **Automated Weather Alerts**: Checks UK Met Office every hour for severe weather warnings and broadcasts messages
-- **Live Dashboard**: Web-based message send/receive interface with memory and scrollback
-- **Auto-responses**: Responds to 'Test' and 'Ping' messages
+- **Live Dashboard**: Web-based message send/receive interface with memory and scrollback - you're no longer tied to your phone
+- **Auto-responses**: Responds to ping, /ping, test and /test messages
 - **Email Notifications**: Sends alerts to admin (optional)
 - **Customizable**: All features can be disabled or modified individually
 - **Rate Limiting**: Built-in protection against channel flooding
