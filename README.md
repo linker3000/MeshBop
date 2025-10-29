@@ -148,7 +148,7 @@ This is a major rewrite. See [Upgrading](#upgrading) for migration instructions.
 NB: The wiring on this diagram was corrected on 29-Oct-2025
 
 <div align="center">
-<img src="images/wiring.png" alt="Board wiring" width="800">
+<img src="images/wiring-GH.svg" alt="Board wiring" width="800">
 </div>
 
 **If using a Heltec V3 node** instead of the Seeed board, the wiring from the Pi is:
@@ -160,7 +160,7 @@ Tx on Pi to GPIO48 on Heltec V3
 ### Device Wiring Example - Orange Pi Zero 3
 
 <div align="center">
-<img src="images/wiring-orange.png" alt="Board wiring" width="600">
+<img src="images/wiring-orange-GH.svg" alt="Board wiring" width="600">
 </div>
 
 **Note**: The RX/TX pins on your devices may vary. Check your specific board documentation. Remember Rx on one board goes to Tx on the other and vice versa.
