@@ -163,7 +163,7 @@ Tx on Pi to GPIO48 on Heltec V3
 <img src="images/wiring-orange-GH.svg" alt="Board wiring" width="600">
 </div>
 
-**Note**: The RX/TX pins on your devices may vary. Check your specific board documentation. Remember Rx on one board goes to Tx on the other and vice versa.
+**Note**: The RX/TX pins on other devices will vary. Check your specific board documentation. Remember Rx on one board goes to Tx on the other and vice versa.
 
 
 **Connections Summary:**
