@@ -47,11 +47,11 @@ Message triggers are activated using a short, definable prefix (example: `/abcd?
 
 - **?**  Help page
 - **i**  App info page
-- **n**  RSS news feeds (various from V0.51 onwards)
+- **n**  RSS news feeds (various from V0.51 beta onwards)
 - **s**  Sea state (v0.50 beta onwards)
 - **t**  Local time, sunrise and sunset
 - **w**  Local weather
-- **ws** Check for severe weather warnings (v0.51 onwards)
+- **ws** Check for severe weather warnings (v0.51 beta onwards)
 - **z**  Inspirational (Zen) message
    
 ### Additional Features
