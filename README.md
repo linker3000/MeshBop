@@ -140,30 +140,57 @@ This is a major rewrite. See [Upgrading](#upgrading) for migration instructions.
 
 ## Hardware Setup
 
-### Device Wiring Example
+### Device Wiring Example - Raspberry Pi Zero 2W
 
 **IMPORTANT: Power off both devices before wiring!**
+
+NB: The wiring on this diagram was corrected on 29-Oct-2025
 
 <div align="center">
 <img src="images/wiring.png" alt="Board wiring" width="800">
 </div>
 
-**Connections:**
+**If using a Heltec V3 node** instead of the Seeed board, the wiring from the Pi is:
 
-1. **GND/0V**: Pi GND ↔ Node GND (must be connected first)
+Rx on Pi to GPIO47 on Heltec V3
+
+Tx on Pi to GPIO48 on Heltec V3
+
+### Device Wiring Example - Orange Pi Zero 3
+
+<div align="center">
+<img src="images/wiring-orange.png" alt="Board wiring" width="600">
+</div>
+
+**Note**: The RX/TX pins on your devices may vary. Check your specific board documentation. Remember Rx on one board goes to Tx on the other and vice versa.
+
+
+**Connections Summary:**
+
+1. **GND/0V**: Compute device GND ↔ Node GND (must be connected first)
 2. **Serial (crossover)**:
-   - Pi RX ↔ Node TX
-   - Pi TX ↔ Node RX
+   
+      Compute device Rx ↔ Node Tx
+   
+      Compute device Tx ↔ Node Rx
 
-**Note**: The RX/TX pins on your devices may vary. Check your specific board documentation.
+### Tested configurations
 
-### Development Board
+The project used the following:
 
-The project was developed using:
+**Development platform:**
 
-- **Compute**: Raspberry Pi Zero 2W (and an Orange Pi Zero 3 for production)
-- **Node**: Seeed Studios XIAO ESP32 + SX1262 (Heltec V3 for production)
+- **Compute**: Raspberry Pi Zero 2W 
+- **Node**: Seeed Studios XIAO ESP32 + SX1262 
 
+**Live platform:**
+
+- **Compute**: Orange Pi Zero 3 
+- **Node**: Heltec V3 
+
+<div align="center">
+<img src="images/meshbop-live.jpg" alt="Board wiring" width="300">
+</div>
 ---
 
 ## Software Installation
@@ -206,15 +233,34 @@ enable_uart=1
 dtoverlay=uart0
 dtoverlay=disable-bt
 ```
-
 **Note**: Enabling UART requires disabling Bluetooth, as shown.
 
+**OR**
+
+#### Enable Orange Pi Serial Port 
+
+This is for an installation using the **Armbian** distribution (recommended) of Linux for the Orange Pi Zero 3 and not the distribution from the board manufacturer. This distro can be found here: [https://www.armbian.com/orange-pi-zero-3/](https://www.armbian.com/orange-pi-zero-3/)
+
+
+Edit boot config:
+```bash
+sudo nano /boot/armbianEnv.txt
+```
+Add at the end:
+```
+overlays=uart5
+```
+
+
+
+
+Then for whichever config change is done, save and 
 Reboot:
 ```bash
 sudo reboot
 ```
 
-**For Orange Pi Zero 3**: Use the ```orangepi-config``` utility to enable hardware UART5 (creates `ttyS5`).
+If you use the distribution of Linux provided by the Orange Pi board manufacturer (not recommended), the async port is set up by running ```orangepi-config``` and enabling hardware UART5. This creates `/dev/ttyS5`).
 
 ### 2. Node-RED Installation
 
@@ -267,7 +313,7 @@ Using the Meshtastic mobile app:
 3. Enable **Serial Module**
 4. Set mode to **TEXTMSG**
 5. Configure serial settings:
-   - **Baud Rate**: 19200 (or match your setup)
+   - **Baud Rate**: 19200 (some setups might default to 115200 - either should work)
    - **TX Pin**: Check your board pinout
    - **RX Pin**: Check your board pinout
 6. **DO NOT** enable "Override Console Serial Port"
@@ -276,6 +322,10 @@ Using the Meshtastic mobile app:
 <div align="center">
 <img src="images/serial-config-meshtastic.png" alt="Serial config" width="300">
 </div>
+
+**If using a Heltec V3** as per the previous wiring diagram, the pins in the phone config are instead:
+
+Rx = 48, Tx = 47
 
 [Reference: Meshtastic Serial Module Docs](https://meshtastic.org/docs/configuration/module/serial/)
 
@@ -301,20 +351,28 @@ wget https://raw.githubusercontent.com/linker3000/MeshBop/main/meshbop-nnnnn.jso
 
 **Note**: If you see warnings about unused configuration nodes, these can usually be ignored or deleted. They usually relate to a superfluous async port configuration.
 
-### 2. Configure Serial Nodes (Raspberry Pi)
+### 2. Configure Serial (Async) Nodes 
 
-#### Async In Node
-1. Locate the **Async in** node on the first tab
+#### Serial port (Async out) Node
+1. Locate the **Async out** node on the first tab
 2. Double-click to edit
-3. Set **Serial Port**: `/dev/ttyAMA0` (or `/dev/ttyS5` for Orange Pi)
-4. Set **Baud Rate**: `19200`
+3. Set **Serial Port**: `/dev/ttyAMA0` (Raspberry Pi) or `/dev/ttyS1` (Orange Pi running Armbian*)
+4. Set **Baud Rate** to match what was set up in the Meshtastic node configuration via the phone app - this is usually either 19200 or 115200, but double check in the app to make sure both speeds match.**
 5. Deploy
 
 <div align="center">
 <img src="images/async_node_setup.png" alt="Async node setup" width="400">
+<br />
 </div>
 
+*If you are using the Orange Pi distribution of Linux from the board manufacturer instead of Armbian, the async port will be /dev/ttyS5 if the instructions earlier to set it up have been followed.
+
+**If you later find that messages sent from MeshBop contain incorrect characters, try reducing the node's async speed via the phone app, and match that speed in the Node-RED Async node setup. Typically, 19200 is fine. Some nodes with less powerful CPUs may struggle with 115200. 
+
 #### Async Out Node
+
+Defining the serial port via the *Async out* node also makes it available for *Async in*. Check that node and verify that it is using this definition too though.
+
 **Keep this DISABLED until all configuration is complete and tested!**
 
 ### 3. Main Configuration
