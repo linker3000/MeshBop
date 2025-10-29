@@ -190,8 +190,14 @@ The project used the following:
 
 <div align="center">
 <img src="images/meshbop-live.jpg" alt="Board wiring" width="300">
-  <br />
+<br />
 </div>
+
+<div align="center">
+<img src="images/wiring-livebox.png" alt="Board wiring" width="900">
+<br />
+</div>
+
 
 ---
 
