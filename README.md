@@ -3,9 +3,13 @@
 
 A simple automated messaging service and Web-based terminal for Meshtastic, written as a set of Node-RED flows. 
 
-Meshtastic is an open-source, off-grid communication platform that enables long-range messaging between devices 
-using low-cost LoRa radio hardware, creating mesh networks that don't require phones, WiFi, or cellular service. 
-Learn more at https://meshtastic.org
+Meshtastic is an open-source, off-grid communication platform that enables long-range messaging between devices using low-cost LoRa radio hardware, creating mesh networks that don't require phones, WiFi, or cellular service. 
+
+[https://meshtastic.org](https://meshtastic.org)
+
+Node-RED is a visual flow-based programming tool built on Node.js that lets users connect devices, APIs, and services using drag-and-drop “nodes.”
+
+[https://nodered.org/](https://nodered.org/)
 
 A 'weekend project' that got a bit out of hand!
 
