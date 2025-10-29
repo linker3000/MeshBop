@@ -210,6 +210,8 @@ The project used the following:
 
 ### 1. Raspberry Pi Setup
 
+If you are using a different compute board you can follow these instructions in general, adapting them for your setup. Some notes are provided for the Orange Pi Zero 3 board, which was used for the boxed 'live' node.
+
 #### Install OS
 1. Use Raspberry Pi Imager to install **Raspberry Pi OS Lite** (minimal) on SD card (8GB minimum)
 2. Boot the Pi with display and keyboard connected
@@ -382,11 +384,11 @@ wget https://raw.githubusercontent.com/linker3000/MeshBop/main/meshbop-nnnnn.jso
 
 **If you later find that messages sent from MeshBop contain incorrect characters, try reducing the node's async speed via the phone app, and match that speed in the Node-RED Async node setup. Typically, 19200 is fine. Some nodes with less powerful CPUs may struggle with 115200. 
 
-#### Async Out Node
+#### Async In Node
 
 Defining the serial port via the *Async out* node also makes it available for *Async in*. Check that node and verify that it is using this definition too though.
 
-**Keep this DISABLED until all configuration is complete and tested!**
+**Keep the *Async out* node DISABLED until all configuration is complete and tested!**
 
 ### 3. Main Configuration
 
