@@ -68,6 +68,7 @@ Message triggers are activated using a short, definable prefix (example: `/abcd?
 - **Rate Limiting**: Built-in protection against channel flooding
 
 ---
+Not all beta versions will be put up for download - only those with major revisions or bug fixes.
 
 ## What's New in v0.50 beta
 
