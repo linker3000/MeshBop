@@ -64,6 +64,7 @@ Message triggers are activated using a short, definable prefix (example: `/abcd?
 - **Live Dashboard**: Web-based message send/receive interface with memory and scrollback - you're no longer tied to your phone
 - **Auto-responses**: Responds to ping, /ping, test and /test messages
 - **Email Notifications**: Sends alerts to admin (optional)
+- **Daily status report** from the compute platform (RAM used, disk free etc. v0.52 beta onwards)
 - **Customizable**: All features can be disabled or modified individually
 - **Rate Limiting**: Built-in protection against channel flooding
 
@@ -233,7 +234,7 @@ sudo nmcli con mod "YourSSID" ipv4.addresses 192.168.1.100/24
 sudo nmcli con mod "YourSSID" ipv4.gateway 192.168.1.1
 sudo nmcli con mod "YourSSID" ipv4.dns "9.9.9.9"
 sudo nmcli con mod "YourSSID" ipv4.method manual
-sudo nmcli con down "YourSSID" && sudo nmcli con up "YourSSID
+sudo nmcli con down "YourSSID" && sudo nmcli con up "YourSSID"
 ```
 Use IP addresses to suit your network setup.
 
@@ -269,10 +270,6 @@ Add at the end:
 ```
 overlays=uart5
 ```
-
-
-
-
 Then for whichever config change is done, save and 
 Reboot:
 ```bash
