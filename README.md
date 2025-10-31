@@ -223,14 +223,17 @@ nmcli device wifi list
 nmcli device wifi connect "YourSSID" password "YourPassword"
 ```
 
+NetworkManager creates a connection profile, typically named "YourSSID"
+
 [Reference: Jeff Geerling's nmcli guide](https://www.jeffgeerling.com/blog/2023/nmcli-wifi-on-raspberry-pi-os-12-bookworm)
 
-#### Set Static IP (Optional but Recommended)
+#### Set Static IP and connection details (Optional but Recommended)
 ```bash
-sudo nmcli con mod "Wired connection 1" ipv4.addresses 192.168.1.100/24
-sudo nmcli con mod "Wired connection 1" ipv4.gateway 192.168.1.1
-sudo nmcli con mod "Wired connection 1" ipv4.dns "9.9.9.9"
-sudo nmcli con mod "Wired connection 1" ipv4.method manual
+sudo nmcli con mod "YourSSID" ipv4.addresses 192.168.1.100/24
+sudo nmcli con mod "YourSSID" ipv4.gateway 192.168.1.1
+sudo nmcli con mod "YourSSID" ipv4.dns "9.9.9.9"
+sudo nmcli con mod "YourSSID" ipv4.method manual
+sudo nmcli con down "YourSSID" && sudo nmcli con up "YourSSID
 ```
 Use IP addresses to suit your network setup.
 
