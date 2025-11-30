@@ -339,6 +339,7 @@ Install these plugins via **Manage Palette** menu:
 - node-red-node-email
 - node-red-node-ping
 - node-red-node-serialport
+- node-red-contrib-cron-plus
 ```
 
 **Important**: Install **@flowfuse/node-red-dashboard** (Dashboard 2.0), not the legacy dashboard.
