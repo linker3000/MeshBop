@@ -19,7 +19,7 @@ A 'weekend project' that got a bit out of hand!
 
 - [Overview](#overview)
 - [Features](#features)
-- [What's New in v0.50 beta](#whats-new-in-v050-beta)
+- [What's New](#whats-new)
 - [Prerequisites](#prerequisites)
 - [Quick Start](#quick-start)
 - [Hardware Setup](#hardware-setup)
@@ -69,13 +69,38 @@ Message triggers are activated using a short, definable prefix (example: `/abcd?
 - **Rate Limiting**: Built-in protection against channel flooding
 
 ---
+## What's New
+
 Not all beta versions will be put up for download - only those with major revisions or bug fixes.
 
-## What's New in v0.50 beta
+### v0.60 beta
+
+This release contains minor fixes and a few enhancements:
+
+* Added multiple news feed sources - see the notes on the RSS News tab
+* Daily status email
+* System parameters (including TCP/IP address) determined automatically at startup
+* Tidied up setting of email to/from addresses
+* Fixed the truncation of Met Office severe weather warnings
+* Repeating inject nodes (eg: severe weather check) replaced with Cronplus node so that
+  the exact time of firing could be set
+* Severe weather warning now checked every *2* hours, on the hour
+
+#### Upgrading instructions (From 0.5x):
+
+Follow the general guidance towards the end of this ReadMe to replace the existing flows.json file. Specifically: 
+
+Copy and save the text and settings from the "*Read me, and set global variables in here before you start*" node on the *Main Setup* tab in your running flows and later paste them over the contents of this node once you have followed the upgrade instructions. 
+
+If you had manually set your host device IP address in the setup file, that line should be removed because the address is now set automatically.
+
+Install the *cronplus* node using the Node-RED palette manager.
+
+### v0.50 beta
 
 This is a major rewrite. See [Upgrading](#upgrading) for migration instructions.
 
-### Major Improvements
+#### Major Improvements
 
 - **Simplified Configuration**: Most variables and messages now in centralized function nodes
 - **Refactored Message Parsing**: Improved conditional handling and streamlined parsing
@@ -95,7 +120,7 @@ This is a major rewrite. See [Upgrading](#upgrading) for migration instructions.
 - **Auto-compiling Help**: Help message is automatically compiled and sorted
 - **More Debug Options**: Additional debug nodes throughout
 
-### Bug Fixes
+#### Bug Fixes
 
 - Fixed message chunk ordering issues
 - Improved handling of empty news/weather data
@@ -512,9 +537,11 @@ These instructions assume MeshBop is the only set of flows in your Node-RED inst
 
 ### Upgrade Process
 
+These notes are written for a Raspberry Pi installation. Modify as needed if the install uses a different compute device.
+
 #### 1. Take MeshBop Offline
 
-Disable the **Async Out** node or switch to a test channel.
+Disable the **Async Out** node in Node-RED or switch the primary channel on the node to a test channel.
 
 
 #### 2. Check which user runs Node-RED
@@ -582,11 +609,7 @@ node-red-log
 1. Open Node-RED editor: `http://[pi-ip]:1880`
 2. Review all tabs and comments
 3. Reapply customizations from your notes
-4. Test thoroughly before going live
-
-### Upgrade Notes by Version
-
-Will be here.
+4. Test thoroughly before going live by re-enabling the Tx node or switching the node back to its working channel in the node configuration app or tools.
 
 ---
 
