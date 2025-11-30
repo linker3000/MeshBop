@@ -60,7 +60,7 @@ Message triggers are activated using a short, definable prefix (example: `/abcd?
    
 ### Additional Features
 
-- **Automated Weather Alerts**: Checks UK Met Office every hour for severe weather warnings and broadcasts messages
+- **Automated Weather Alerts**: Checks UK Met Office every hour (every two hours in V0.6 beta onwards) for severe weather warnings and broadcasts messages
 - **Live Dashboard**: Web-based message send/receive interface with memory and scrollback - you're no longer tied to your phone
 - **Auto-responses**: Responds to ping, /ping, test and /test messages
 - **Email Notifications**: Sends alerts to admin (optional)
