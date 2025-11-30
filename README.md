@@ -51,7 +51,7 @@ Message triggers are activated using a short, definable prefix (example: `/abcd?
 
 - **?**  Help page
 - **i**  App info page
-- **n**  RSS news feeds (various from V0.51 beta onwards)
+- **n**  RSS news feeds (BBC by default, but various others supported from V0.51 beta onwards)
 - **s**  Sea state (v0.50 beta onwards)
 - **t**  Local time, sunrise and sunset
 - **w**  Local weather
@@ -445,6 +445,7 @@ If using email notifications:
    - Port
    - Username
    - Password
+3. Enable the node (if necessary)
 
 **Tip**: Use an app-specific password for Gmail accounts.
 
@@ -797,7 +798,7 @@ sudo systemctl list-units | grep node
 
 ### Localisation
 
-MeshBop was written in the UK and uses UK/EU services for news, weather and other information. These services may not be available in your country, or there may be better, local ones to use. If you replace any flows with regional versions, please export them and share here for others to enjoy.
+MeshBop was written in the UK and by default uses UK/EU services for news, weather and other information. These services may not be available in your country, or there may be better, local ones to use. If you replace any flows with regional versions, please export them and share here for others to enjoy.
 
 ### Performance Tips
 
@@ -809,10 +810,10 @@ MeshBop was written in the UK and uses UK/EU services for news, weather and othe
 ### Defaults
 
 - **Ident message**: Sent daily at 07:00
-- **Weather alerts**: Checked hourly
+- **Weather alerts**: Checked every two hours (V0.60 beta onwards)
 - **Rate limits**: In place to protect the mesh network - please don't bypass
 
 ---
 
-**Last Updated**: October 2025  
-**Current Version**: 0.50 beta
+**Last Updated**: November 2025  
+**Current Version**: 0.60 beta
