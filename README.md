@@ -73,7 +73,18 @@ Message triggers are activated using a short, definable prefix (example: `/abcd?
 
 Not all beta versions will be put up for download - only those with major revisions or bug fixes.
 
+### v0.61 beta
+
+**02-Dec-2025**
+
+A quick bug fix related to the use of the new cronplus node for timing. The change in how it invokes a check
+caused a message stating "No current severe weather warnings" to be transmitted every two hours on the hour when there was nothing to report. Previosuly this message went the Node-Red debug window. This has now been fixed and the relevant function node has also been simplified.
+
+The simplest way to upgrade is to follow the process at the end of this Readme: Copy the full text of the setup node into a text editor, stop the current Node-RED instance, backup the current flows.json file, copy this file into place and rename it to flows.json + check permissions and ownership, restart Node-RED, copy the text back into the setup node and check / enable the email and Tx nodes, making sure the latter refers to the correct async port. Check all other flows and their notes.
+
 ### v0.60 beta
+
+**Deprecated: Please use V0.61 beta or later**
 
 This release contains minor fixes and a few enhancements:
 
@@ -619,7 +630,7 @@ node-red-log
 
 ### Serial Port Issues
 
-**Problem**: Serial port stops responding
+**Problem**: Serial port stops responding (raspberry Pi)
 
 **Solution**:
 ```bash
@@ -627,6 +638,19 @@ sudo systemctl stop serial-getty@ttyAMA0.service
 sudo systemctl disable serial-getty@ttyAMA0.service
 sudo reboot
 ```
+
+### Cannot run new flows (old flows still shown)
+
+**Problem**: New flows installed but the old ones are still shown and used
+
+**Cause**: Node-RED has reverted to a backup file
+
+**Solution**
+
+1. Stop Node-RED (eg: sudo systemctl stop nodered)
+2. Find the location of your Node-RED flows.json file
+3. Locate and either delete or move any 'backup' files to a different folder.
+4. Restart Node-Red and check
 
 ### Meshtastic Firmware Bug
 
